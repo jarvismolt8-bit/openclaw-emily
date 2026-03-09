@@ -1,1 +1,0 @@
-This is a temporary file intended for pushing. to check if workspace folder is not a submodule anymore.

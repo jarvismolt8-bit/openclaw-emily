@@ -11,15 +11,14 @@ Manage git operations for all repositories on the server.
 
 | Name | Path | GitHub |
 |------|------|--------|
-| openclaw-agent | `/root/.openclaw/` | jarvismolt8-bit/openclaw-emily-agent |
-| workspace | `/root/.openclaw/workspace/` | jarvismolt8-bit/openclaw-emily |
+| openclaw | `/root/.openclaw/` | jarvismolt8-bit/openclaw-emily |
 | cashflow | `/var/www/cashflow-manager/` | jarvismolt8-bit/emily-web-app |
 | find-your-seat | `/var/www/find-your-seat/` | jarvismolt8-bit/venaiassistant |
 
 ## Repository Paths
 
 ```bash
-OPENCLAW_AGENT="/root/.openclaw"
+OPENCLAW="/root/.openclaw"
 WORKSPACE="/root/.openclaw/workspace"
 CASHFLOW="/var/www/cashflow-manager"
 FIND_YOUR_SEAT="/var/www/find-your-seat"
@@ -231,18 +230,18 @@ There's a helper script at `~/workspace/skills/github-skill/github.sh` for conve
 
 ```bash
 # Check status
-~/workspace/skills/github-skill/github.sh status openclaw-agent
+~/workspace/skills/github-skill/github.sh status openclaw
 ~/workspace/skills/github-skill/github.sh status workspace
 
 # Check all repos
 ~/workspace/skills/github-skill/github.sh status-all
 
 # Quick commit and push
-~/workspace/skills/github-skill/github.sh quick openclaw-agent "chore: update backup"
+~/workspace/skills/github-skill/github.sh quick openclaw "chore: update backup"
 ~/workspace/skills/github-skill/github.sh quick workspace "feat: new feature"
 
 # Push
-~/workspace/skills/github-skill/github.sh push openclaw-agent
+~/workspace/skills/github-skill/github.sh push openclaw
 ~/workspace/skills/github-skill/github.sh push workspace
 ```
 
