@@ -1,0 +1,30 @@
+# Generated outputs
+output.md
+screenshot.png
+*.png
+*.md
+!SKILL.md
+!references/*.md
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment (if ever added here)
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test outputs
+test_output/
+crawl_outputs/

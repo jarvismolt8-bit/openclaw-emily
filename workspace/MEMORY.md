@@ -1,0 +1,1 @@
+Whenever checking available free models for opencode, use this URL: https://opencode.ai/zen/v1/models

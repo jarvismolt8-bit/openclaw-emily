@@ -1,0 +1,117 @@
+#!/bin/bash
+# Crawl4AI Wrapper Script for OpenClaw Environment
+# Simple command-line interface for Crawl4AI
+
+VENV_PYTHON="/root/.openclaw/workspace/crawl4ai_env/bin/python"
+SKILL_DIR="/root/.openclaw/workspace/skills/crawl4ai"
+OUTPUT_DIR="/root/.openclaw/workspace/crawl4ai_outputs"
+
+# Colors for output
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+show_help() {
+    echo -e "${BLUE}Crawl4AI Wrapper${NC} - Web crawling made easy"
+    echo ""
+    echo "Usage: crawl4ai <command> [options]"
+    echo ""
+    echo "Commands:"
+    echo "  crawl <url>       Crawl a single URL and save markdown"
+    echo "  extract <url>     Extract structured data (articles, etc.)"
+    echo "  batch <file>      Crawl multiple URLs from a file"
+    echo "  airbnb            Airbnb pricing analysis for Philippines"
+    echo "  test              Run basic crawling tests"
+    echo "  doctor            Run Crawl4AI health check"
+    echo "  help              Show this help message"
+    echo ""
+    echo "Examples:"
+    echo "  crawl4ai crawl https://example.com"
+    echo "  crawl4ai extract https://news.com --discover"
+    echo "  crawl4ai airbnb search -l cdo -i 2026-03-01 -o 2026-03-03"
+    echo "  crawl4ai airbnb locations"
+    echo "  crawl4ai batch urls.txt"
+    echo "  crawl4ai test"
+    echo "  crawl4ai doctor"
+    echo ""
+    echo "Outputs are saved to: $OUTPUT_DIR"
+}
+
+case "${1:-help}" in
+    crawl)
+        if [ -z "$2" ]; then
+            echo -e "${YELLOW}Error: URL required${NC}"
+            echo "Usage: crawl4ai crawl <url>"
+            exit 1
+        fi
+        echo -e "${BLUE}🚀 Crawling: $2${NC}"
+        cd "$SKILL_DIR"
+        $VENV_PYTHON scripts/basic_crawler.py "$2"
+        # Move outputs to centralized directory
+        if [ -f "$SKILL_DIR/output.md" ]; then
+            mv "$SKILL_DIR/output.md" "$OUTPUT_DIR/crawl_$(date +%Y%m%d_%H%M%S).md"
+        fi
+        if [ -f "$SKILL_DIR/screenshot.png" ]; then
+            mv "$SKILL_DIR/screenshot.png" "$OUTPUT_DIR/screenshot_$(date +%Y%m%d_%H%M%S).png"
+        fi
+        echo -e "${GREEN}✅ Output saved to $OUTPUT_DIR/${NC}"
+        ;;
+    
+    extract)
+        if [ -z "$2" ]; then
+            echo -e "${YELLOW}Error: URL required${NC}"
+            echo "Usage: crawl4ai extract <url> [--pattern <name>|--discover]"
+            exit 1
+        fi
+        echo -e "${BLUE}📋 Extracting structured data from: $2${NC}"
+        cd "$SKILL_DIR"
+        shift 2  # Remove 'extract' and URL from args
+        $VENV_PYTHON scripts/extract_structured.py "$2" --output json "$@" \
+            --file "$OUTPUT_DIR/extracted_$(date +%Y%m%d_%H%M%S).json"
+        echo -e "${GREEN}✅ Extracted data saved to $OUTPUT_DIR/${NC}"
+        ;;
+    
+    batch)
+        if [ -z "$2" ]; then
+            echo -e "${YELLOW}Error: URL file required${NC}"
+            echo "Usage: crawl4ai batch <urls.txt>"
+            exit 1
+        fi
+        if [ ! -f "$2" ]; then
+            echo -e "${YELLOW}Error: File not found: $2${NC}"
+            exit 1
+        fi
+        echo -e "${BLUE}🚀 Batch crawling from: $2${NC}"
+        cd "$SKILL_DIR"
+        $VENV_PYTHON scripts/batch_crawler.py "$2"
+        ;;
+    
+    test)
+        echo -e "${BLUE}🧪 Running Crawl4AI tests...${NC}"
+        cd "$SKILL_DIR"
+        $VENV_PYTHON tests/test_basic_crawling.py
+        ;;
+    
+    doctor)
+        echo -e "${BLUE}🏥 Running Crawl4AI health check...${NC}"
+        /root/.openclaw/workspace/crawl4ai_env/bin/crawl4ai-doctor
+        ;;
+    
+    airbnb)
+        # Pass all arguments to airbnb pricing script
+        shift  # Remove 'airbnb' from args
+        AIRBNB_SKILL="/root/.openclaw/workspace/skills/airbnb-crawl-skill"
+        $VENV_PYTHON "$AIRBNB_SKILL/airbnb_pricing.py" "$@"
+        ;;
+    
+    help|--help|-h)
+        show_help
+        ;;
+    
+    *)
+        echo -e "${YELLOW}Unknown command: $1${NC}"
+        show_help
+        exit 1
+        ;;
+esac

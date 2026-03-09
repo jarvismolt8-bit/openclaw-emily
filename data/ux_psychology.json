@@ -1,0 +1,274 @@
+
+{
+  "source": "https://builtformars.com/ux-glossary",
+  "category": "ux-psychology",
+  "description": "UX Psychology glossary terms from Built for Mars",
+  "note": "All 53 UX Psychology terms populated. Completed on 2026-02-10.",
+  "terms": [
+    {
+      "title": "Aha! Moment",
+      "url": "https://builtformars.com/ux-glossary/aha-moment",
+      "description": "A milestone in the user journey where users discover the product's value and realize its worth. It's the moment when users understand the solution and feel satisfied with their discovery. The science behind aha! moments depends on user emotions and brain systems."
+    },
+    {
+      "title": "Cognitive Dissonance",
+      "url": "https://builtformars.com/ux-glossary/cognitive-dissonance",
+      "description": "The mental discomfort users feel when they hold conflicting beliefs, attitudes, or values. In UX, it occurs when a user's beliefs about a product clash with their actual experience. Users may experience anxiety, frustration, loss of trust, or abandon the product."
+    },
+    {
+      "title": "Cognitive Drift",
+      "url": "https://builtformars.com/ux-glossary/cognitive-drift",
+      "description": "The tendency for a user's mental model of a system to change over time as they interact with it. People experience Cognitive Drift if more than one second elapses between interacting with technology and seeing something change on screen. This can lead to confusion if the system's behavior doesn't align with their updated model."
+    },
+    {
+      "title": "Cognitive Load",
+      "url": "https://builtformars.com/ux-glossary/cognitive-load",
+      "description": "The mental effort required for users to process information, reason, and make decisions about a product. Any mental process creates cognitive load because it requires energy and effort. UX designers aim to keep users' cognitive load to a minimum by avoiding distracting or unnecessary design elements."
+    },
+    {
+      "title": "Confirmation Bias",
+      "url": "https://builtformars.com/ux-glossary/confirmation-bias",
+      "description": "A cognitive bias where people selectively gather or recall information in a way that confirms their prior beliefs. In UX, users interpret information in a biased manner that fits their existing beliefs, potentially ignoring contradictory evidence."
+    },
+    {
+      "title": "Content Blindness",
+      "url": "https://builtformars.com/ux-glossary/content-blindness",
+      "description": "When exposed to similar or identical content, people will subconsciously pay less and less attention to it. This can also refer to users ignoring elements they perceive as ads or changes in predictable locations."
+    },
+    {
+      "title": "Context Craving",
+      "url": "https://builtformars.com/ux-glossary/context-craving",
+      "description": "Users naturally seek contextual information and guidance to understand and engage with a product effectively. UX design should provide relevant context to motivate users and simplify their decision-making process within any given situation."
+    },
+    {
+      "title": "Context Shifting",
+      "url": "https://builtformars.com/ux-glossary/context-shifting",
+      "description": "Context shifting refers to the cognitive process of shifting attention between different tasks, mental states, or topics. In UX, it relates to how users navigate between different functions or how the interface supports these transitions seamlessly, including the propensity to alter topics suddenly."
+    },
+    {
+      "title": "Curiosity Gap",
+      "url": "https://builtformars.com/ux-glossary/curiosity-gap",
+      "description": "The tendency to seek out missing information, even if it's not necessary to solve a problem. It's the space between what a person knows and what they want to know. This gap creates a burning desire to fill the knowledge void, driving users to engage and seek more information."
+    },
+    {
+      "title": "Decision Fatigue",
+      "url": "https://builtformars.com/ux-glossary/decision-fatigue",
+      "description": "The exhausted cognitive state that reduces decision-making ability after making many decisions. Users have limited mental energy for decision-making throughout the day, and their ability to make choices decreases over time. UX designers should minimize the number of decisions users need to make."
+    },
+    {
+      "title": "Default Bias",
+      "url": "https://builtformars.com/ux-glossary/default-bias",
+      "description": "Default bias, also known as status quo bias, is the tendency for people to favor pre-selected options or settings. Users often stick with the default choice due to cognitive shortcuts, loss aversion, or reduced decision fatigue, even if other alternatives might be objectively superior."
+    },
+    {
+      "title": "Delegated Decisions",
+      "url": "https://builtformars.com/ux-glossary/delegated-decisions",
+      "description": "In UX, delegated decisions relate to guiding users through choices by structuring interfaces to nudge them toward specific outcomes. It involves presenting options and information in a way that simplifies decision-making, often by simplifying complex choices or implicitly making decisions for the user based on context."
+    },
+    {
+      "title": "Doherty Threshold",
+      "url": "https://builtformars.com/ux-glossary/doherty-threshold",
+      "description": "The Doherty Threshold is a principle in human-computer interaction stating that productivity and user satisfaction are optimized when the response time between a user's action and the system's response is under 400 milliseconds. This pace ensures neither the user nor the system has to wait, leading to highly engaging and efficient interactions."
+    },
+    {
+      "title": "Ego Depletion",
+      "url": "https://builtformars.com/ux-glossary/ego-depletion",
+      "description": "The idea that self-control and mental energy for decision-making are limited resources, diminishing after acts of self-control, leading to reduced capacity for effortful decisions and increased susceptibility to temptation."
+    },
+    {
+      "title": "Endowment Effect",
+      "url": "https://builtformars.com/ux-glossary/endowment-effect",
+      "description": "People value things they already possess more highly than identical things they do not own, often driven by loss aversion, leading to an emotional attachment simply because something is theirs."
+    },
+    {
+      "title": "Experience Creep",
+      "url": "https://builtformars.com/ux-glossary/experience-creep",
+      "description": "The increasing complexity and difficulty of a user experience over time due to the addition of more features, making it harder to maintain simplicity."
+    },
+    {
+      "title": "Familiarity Bias",
+      "url": "https://builtformars.com/ux-glossary/familiarity-bias",
+      "description": "An inclination to favor familiar or easily recognizable options over unfamiliar ones, even if the unfamiliar options may be better, often due to cognitive ease or the mere exposure effect."
+    },
+    {
+      "title": "Framing",
+      "url": "https://builtformars.com/ux-glossary/framing",
+      "description": "The cognitive bias where decisions are influenced by how options are presented rather than their content. How information is framed (positively or negatively) affects user decisions. Presenting information in terms of gains vs losses can dramatically change user choices."
+    },
+    {
+      "title": "Fresh Start Effect",
+      "url": "https://builtformars.com/ux-glossary/fresh-start-effect",
+      "description": "People are more motivated to take action towards a goal after temporal landmarks representing new beginnings (like a new year or week), as they associate these with a clean slate."
+    },
+    {
+      "title": "Fuzzy Context",
+      "url": "https://builtformars.com/ux-glossary/fuzzy-context",
+      "description": "Providing a small amount of context can create ambiguity and lead to more follow-on questions rather than clarity, as the boundaries of understanding become imprecise and vary with conditions."
+    },
+    {
+      "title": "Gamification",
+      "url": "https://builtformars.com/ux-glossary/gamification",
+      "description": "The application of game-design elements and game principles in non-game contexts to enhance user engagement. Features like leaderboards, badges, and points make tasks feel more enjoyable and engaging. Unlike full games designed for entertainment, gamification applies these elements to solve user problems."
+    },
+    {
+      "title": "Goal Gradient Effect",
+      "url": "https://builtformars.com/ux-glossary/goal-gradient-effect",
+      "description": "The psychological phenomenon where motivation increases as people get closer to a reward or goal. As people move closer to a goal, their excitement grows and motivation amps up to finish the task faster. Coined by behaviorist Clark Hull in 1932, this effect explains why progress bars and loyalty programs work."
+    },
+    {
+      "title": "Hawthorne Effect",
+      "url": "https://builtformars.com/ux-glossary/hawthorne-effect",
+      "description": "Individuals change their behavior because they know they are being observed, leading to temporary improvements or altered engagement that doesn't reflect normal behavior, impacting UX research validity."
+    },
+    {
+      "title": "Hick's Law",
+      "url": "https://builtformars.com/ux-glossary/hicks-law",
+      "description": "The principle that the more choices a person is presented with, the longer they will take to make a decision. Named after psychologists William Edmund Hick and Ray Hyman. The more stimuli to choose from, the longer users need to interpret and decide, creating unwanted cognitive work."
+    },
+    {
+      "title": "Hyperbolic Discounting",
+      "url": "https://builtformars.com/ux-glossary/hyperbolic-discounting",
+      "description": "The tendency to prefer immediate rewards over larger rewards that come later, even if the immediate reward is smaller, leading to choices that are inconsistent over time."
+    },
+    {
+      "title": "Intentional Friction",
+      "url": "https://builtformars.com/ux-glossary/intentional-friction",
+      "description": "The deliberate introduction of small obstacles or extra steps in a user flow to slow users down at critical moments, reduce errors, ensure more mindful decisions, and enhance security or prevent mistakes."
+    },
+    {
+      "title": "Knowledge Gap",
+      "url": "https://builtformars.com/ux-glossary/knowledge-gap",
+      "description": "Information that a user must know in order to complete a task, and which, if unbridged, can put an unnecessary burden on the user and represent a UX failure."
+    },
+    {
+      "title": "Law of Minimal Effort",
+      "url": "https://builtformars.com/ux-glossary/law-of-minimal-effort",
+      "description": "Users will naturally choose the course of action that requires the least effort or energy expenditure, performing desired actions most frequently when the task is easy to use and accessible."
+    },
+    {
+      "title": "Loss Aversion",
+      "url": "https://builtformars.com/ux-glossary/loss-aversion",
+      "description": "The behavioral phenomenon where avoiding losses is valued more highly than acquiring equivalent gains. The unhappiness of losing $10 is greater than the happiness of finding $10. This significantly influences decision-making and affects how copy and options should be designed to guide user choices."
+    },
+    {
+      "title": "Overjustification Effect",
+      "url": "https://builtformars.com/ux-glossary/overjustification-effect",
+      "description": "An expected external incentive (like money or prizes) decreases a person's intrinsic motivation to perform a task, leading to motivational crowding out."
+    },
+    {
+      "title": "Pattern Matching",
+      "url": "https://builtformars.com/ux-glossary/pattern-matching",
+      "description": "Users recognize and rely on familiar patterns in interfaces to understand and interact with them, allowing designers to create intuitive experiences by using consistent and predictable design elements."
+    },
+    {
+      "title": "Peak-end Rule",
+      "url": "https://builtformars.com/ux-glossary/peak-end-rule",
+      "description": "The cognitive bias where people judge an experience largely based on how they felt at its peak and at its end, rather than the total sum or average of every moment. Users focus on the most intense aspect and endpoint of an experience and ignore everything else, creating a biased recollection of what happened."
+    },
+    {
+      "title": "Progressive Disclosure",
+      "url": "https://builtformars.com/ux-glossary/progressive-disclosure",
+      "description": "A UX technique that reduces cognitive load by gradually revealing more complex information or features as the user progresses. Complex and less frequently used options are moved out of the main interface into secondary screens. This allows users to control the complexity of their interface."
+    },
+    {
+      "title": "Pygmalion Effect",
+      "url": "https://builtformars.com/ux-glossary/pygmalion-effect",
+      "description": "High expectations placed upon individuals (or perceived by individuals about themselves) lead to improved performance, influencing their behavior and potential."
+    },
+    {
+      "title": "Reactance",
+      "url": "https://builtformars.com/ux-glossary/reactance",
+      "description": "An unpleasant motivational reaction to perceived threats to behavioral freedom or autonomy, causing individuals to resist restrictions and potentially do the opposite of what is suggested."
+    },
+    {
+      "title": "Reactive Onboarding",
+      "url": "https://builtformars.com/ux-glossary/reactive-onboarding",
+      "description": "Providing guidance or support triggered by the user's actions or expressed needs, responding to their journey and readiness rather than being pushed proactively."
+    },
+    {
+      "title": "Recency Bias",
+      "url": "https://builtformars.com/ux-glossary/recency-bias",
+      "description": "The tendency to better remember and recall information or events that occurred most recently, giving disproportionate importance to recent experiences or data."
+    },
+    {
+      "title": "Reverse Prototype",
+      "url": "https://builtformars.com/ux-glossary/reverse-prototype",
+      "description": "A method of reaching a Minimum Viable Product (MVP) by starting with a live product and removing unnecessary functionality. Unlike traditional prototyping which builds up features, reverse prototyping strips down existing complex products to find the essential core."
+    },
+    {
+      "title": "Selective Attention",
+      "url": "https://builtformars.com/ux-glossary/selective-attention",
+      "description": "The process of focusing on a subset of stimuli while ignoring others, often an automatic filter for important information, meaning users may overlook elements not in their current focus."
+    },
+    {
+      "title": "Serial Position Effect",
+      "url": "https://builtformars.com/ux-glossary/serial-position-effect",
+      "description": "The cognitive bias where people recall the first and last items in a list more easily than the items in the middle. Based on two concepts: the primacy effect (remembering first items) and the recency effect (remembering last items). This affects how lists, menus, and navigation should be designed."
+    },
+    {
+      "title": "Social Proof",
+      "url": "https://builtformars.com/ux-glossary/social-proof",
+      "description": "A psychological phenomenon where people reference the behavior of others to guide their own decisions. It's the tendency to follow the actions of others when making choices. Users look to peers' behavior to determine what is appropriate or desirable in uncertain situations."
+    },
+    {
+      "title": "Specificity",
+      "url": "https://builtformars.com/ux-glossary/specificity",
+      "description": "The principle that adapting design efforts to the needs of a more specific audience creates solutions useful to a broader set of needs. The Paradox of Specificity suggests that tailoring experiences for niche users often results in better outcomes for everyone."
+    },
+    {
+      "title": "The Anchor Effect",
+      "url": "https://builtformars.com/ux-glossary/the-anchor-effect",
+      "description": "The cognitive bias where people rely too heavily on the first piece of information they receive when making decisions. The initial anchor influences subsequent judgments and choices. Smart UX designers use this to subtly steer user behavior and optimize decision-making processes."
+    },
+    {
+      "title": "The Decoy Effect",
+      "url": "https://builtformars.com/ux-glossary/the-decoy-effect",
+      "description": "The psychological phenomenon where the addition of a specifically designed third option changes the perception of the other two and shifts decision probability. We broadly make decisions based on comparative values based on available choices. Companies create intentionally unsuitable packages to make other options feel like better value."
+    },
+    {
+      "title": "The FITD Effect",
+      "url": "https://builtformars.com/ux-glossary/the-fitd-effect",
+      "description": "The Foot-in-the-Door technique, where initial agreement to a small request increases compliance with a subsequent larger request."
+    },
+    {
+      "title": "The Labour Illusion",
+      "url": "https://builtformars.com/ux-glossary/the-labour-illusion",
+      "description": "Users perceive results or products more favorably when they are aware of the effort involved, making interactions feel more manual or deliberate and increasing perceived value."
+    },
+    {
+      "title": "The Planning Fallacy",
+      "url": "https://builtformars.com/ux-glossary/the-planning-fallacy",
+      "description": "The tendency to underestimate the time, costs, and risks of future actions, leading to over-optimistic planning and timelines, often despite contrary past experiences."
+    },
+    {
+      "title": "The Scarcity Effect",
+      "url": "https://builtformars.com/ux-glossary/the-scarcity-effect",
+      "description": "A social-psychology phenomenon that causes people to assign high value to things perceived as less available. When people think something is rare or only available for a limited time, they act fast to secure it. This creates urgency and motivates quick decision-making."
+    },
+    {
+      "title": "Tribalism",
+      "url": "https://builtformars.com/ux-glossary/tribalism",
+      "description": "The tendency to form in-groups and out-groups, showing loyalty to one's own group and potentially biased perceptions or distrust of others, which can be leveraged in UX to foster community and belonging."
+    },
+    {
+      "title": "User Delight",
+      "url": "https://builtformars.com/ux-glossary/user-delight",
+      "description": "Any positive emotional affect that a user may have when interacting with a device or interface. It involves incorporating unexpected and delightful elements to create positive emotions and exceed user expectations. A memorable and emotionally engaging user experience goes beyond mere usability."
+    },
+    {
+      "title": "User-Initiated Triggers",
+      "url": "https://builtformars.com/ux-glossary/user-initiated-triggers",
+      "description": "Actions or inputs from the user that directly cause an event or response within the system, often leading to higher engagement due to the user's sense of control."
+    },
+    {
+      "title": "Variable Rewards",
+      "url": "https://builtformars.com/ux-glossary/variable-rewards",
+      "description": "The psychological technique where users receive unpredictable rewards for completing actions, creating sustained engagement. The uncertainty of when the next reward will come creates anticipation and drives continued interaction. This is based on operant conditioning and the variable ratio reinforcement schedule."
+    },
+    {
+      "title": "Visible Lifeboats",
+      "url": "https://builtformars.com/ux-glossary/visible-lifeboats",
+      "description": "The psychological reassurance and confidence provided by the visible presence of backup options or safety nets, even if rarely used, reducing user anxiety."
+    }
+  ]
+}

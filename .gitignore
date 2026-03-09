@@ -1,0 +1,91 @@
+# OpenClaw repository (too large, keep local reference)
+openclaw-repo/
+
+# Python virtual environments (contains binaries, never commit)
+crawl4ai_env/
+venv/
+.venv/
+env/
+
+# Crawl4AI outputs (temporary data files)
+crawl4ai_outputs/
+
+# Logs folder
+logs/*.log
+
+# Data folder (optional - uncomment if data files shouldn't be committed)
+# data/
+
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.abi3.so
+*.egg-info/
+dist/
+build/
+
+# Lock files
+*.lock
+bun.lock
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Node modules (if present in skills or config)
+node_modules/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.backup*
+tasks.csv.backup
+emily-web-app/
+
+# ============ BACKUP EXCLUSIONS ============
+
+# Sensitive credentials (NEVER commit)
+credentials/
+.env
+sessions/
+telegram/
+agents
+
+# Temporary/cache data
+media/
+devices/
+delivery-queue/
+logs/
+
+# Compressed memory archive (not needed in backup)
+memory/archive/
+
+# Memory databases (SQLite - dynamic data)
+memory/*.sqlite
+memory/*.sqlite-*
+
+# Config backups (keep current config only)
+openclaw.json.bak*
+exec-approvals.json
+
+# OpenClaw internal
+archive/
+canvas/
+completions/
+subagents/
+settings/
+bank/

@@ -1,0 +1,358 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.1",
+    "lastTouchedAt": "2026-03-03T16:45:37.703Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-03-03T16:20:03.707Z",
+    "lastRunVersion": "2026.3.1",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "browser": {
+    "enabled": false,
+    "remoteCdpTimeoutMs": 20000,
+    "remoteCdpHandshakeTimeoutMs": 25000,
+    "executablePath": "/usr/bin/google-chrome",
+    "headless": true,
+    "noSandbox": true,
+    "defaultProfile": "openclaw",
+    "snapshotDefaults": {
+      "mode": "efficient"
+    },
+    "profiles": {
+      "openclaw": {
+        "cdpPort": 18800,
+        "color": "#FF4500"
+      },
+      "browserless": {
+        "cdpUrl": "https://production-ams.browserless.io?token=2TuzpdT6y4viZ6Adaea01b918e260de3c823e4d2871c02eb7",
+        "color": "#00AA00"
+      }
+    }
+  },
+  "auth": {
+    "profiles": {
+      "google:default": {
+        "provider": "google",
+        "mode": "api_key"
+      },
+      "opencode:default": {
+        "provider": "opencode",
+        "mode": "api_key"
+      },
+      "huggingface:default": {
+        "provider": "huggingface",
+        "mode": "api_key"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "huggingface": {
+        "baseUrl": "https://router.huggingface.co/v1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "deepseek-ai/DeepSeek-R1",
+            "name": "DeepSeek R1",
+            "reasoning": true,
+            "input": ["text"],
+            "cost": { "input": 3, "output": 7, "cacheRead": 3, "cacheWrite": 3 },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "deepseek-ai/DeepSeek-V3.2",
+            "name": "DeepSeek V3.2",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0.6, "output": 1.25, "cacheRead": 0.6, "cacheWrite": 0.6 },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "meta-llama/Llama-3.3-70B-Instruct",
+            "name": "Llama 3.3 70B Instruct",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0.88, "output": 0.88, "cacheRead": 0.88, "cacheWrite": 0.88 },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "meta-llama/Llama-3.1-8B-Instruct",
+            "name": "Llama 3.1 8B Instruct",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0.18, "output": 0.18, "cacheRead": 0.18, "cacheWrite": 0.18 },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "Qwen/Qwen3-8B",
+            "name": "Qwen3 8B",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0.1, "output": 0.1, "cacheRead": 0.1, "cacheWrite": 0.1 },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "Qwen/Qwen3-32B",
+            "name": "Qwen3 32B",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0.4, "output": 0.4, "cacheRead": 0.4, "cacheWrite": 0.4 },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "Qwen/Qwen2.5-7B-Instruct",
+            "name": "Qwen2.5 7B Instruct",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0.1, "output": 0.1, "cacheRead": 0.1, "cacheWrite": 0.1 },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "openai/gpt-oss-120b",
+            "name": "GPT-OSS 120B",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "moonshotai/Kimi-K2.5",
+            "name": "Kimi K2.5",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0.5, "output": 1.0, "cacheRead": 0.5, "cacheWrite": 0.5 },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "zai-org/GLM-4.7",
+            "name": "GLM 4.7",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0.1, "output": 0.1, "cacheRead": 0.1, "cacheWrite": 0.1 },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "google/gemini-2.5-flash-lite",
+        "fallbacks": [
+          "opencode/minimax-m2.5-free",
+          "deepseek-ai/DeepSeek-R1"
+        ]
+      },
+      "models": {
+        "opencode/gpt-5-nano": {},
+        "google/gemini-2.5-flash-lite": {},
+        "opencode/kimi-k2.5-free": {},
+        "opencode/minimax-m2.5-free": {},
+        "opencode/big-pickle": {},
+        "openrouter/anthropic/claude-opus-4.6": {
+          "alias": "Claude Opus 4.6"
+        },
+        "openrouter/meta-llama/llama-3.3-70b-instruct:free": {
+          "alias": "Llama 3.3 70B"
+        },
+        "openrouter/google/gemma-3-27b-it:free": {
+          "alias": "Gemma 3 27B"
+        },
+        "openrouter/qwen/qwen3-coder:free": {
+          "alias": "Qwen3 Coder"
+        },
+        "openrouter/arcee-ai/trinity-large-preview:free": {
+          "alias": "Trinity Large Preview"
+        },
+        "openrouter/stepfun/step-3.5-flash:free": {
+          "alias": "Step 3.5 Flash"
+        },
+        "openrouter/z-ai/glm-4.5-air:free": {
+          "alias": "GLM 4.5 Air"
+        },
+        "openrouter/nvidia/nemotron-3-nano-30b-a3b:free": {
+          "alias": "Nemotron 30B"
+        },
+        "openrouter/nvidia/nemotron-nano-9b-v2:free": {
+          "alias": "Nemotron 9B"
+        },
+        "openrouter/openai/gpt-oss-120b:free": {
+          "alias": "GPT-OSS 120B (OR)"
+        },
+        "openrouter/openai/gpt-oss-20b:free": {
+          "alias": "GPT-OSS 20B"
+        },
+        "openrouter/qwen/qwen3-next-80b-a3b-instruct:free": {
+          "alias": "Qwen3 Next 80B"
+        },
+        "openrouter/arcee-ai/trinity-mini:free": {
+          "alias": "Trinity Mini"
+        },
+        "huggingface/deepseek-ai/DeepSeek-R1": { "alias": "HF DeepSeek R1" },
+        "huggingface/deepseek-ai/DeepSeek-V3.2": { "alias": "HF DeepSeek V3.2" },
+        "huggingface/meta-llama/Llama-3.3-70B-Instruct": { "alias": "HF Llama 3.3 70B" },
+        "huggingface/meta-llama/Llama-3.1-8B-Instruct": { "alias": "HF Llama 3.1 8B" },
+        "huggingface/Qwen/Qwen3-8B": { "alias": "HF Qwen3 8B" },
+        "huggingface/Qwen/Qwen3-32B": { "alias": "HF Qwen3 32B" },
+        "huggingface/Qwen/Qwen2.5-7B-Instruct": { "alias": "HF Qwen2.5 7B" },
+        "huggingface/openai/gpt-oss-120b": { "alias": "HF GPT-OSS 120B" },
+        "huggingface/moonshotai/Kimi-K2.5": { "alias": "HF Kimi K2.5" },
+        "huggingface/zai-org/GLM-4.7": { "alias": "HF GLM 4.7" }
+      },
+      "workspace": "/root/.openclaw/workspace/",
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main"
+      },
+      {
+        "id": "ven",
+        "name": "ven",
+        "workspace": "/root/.openclaw/workspace-ven",
+        "agentDir": "/root/.openclaw/agents/ven/agent"
+      }
+    ]
+  },
+  "tools": {
+    "deny": [],
+    "web": {
+      "search": {
+        "enabled": true,
+        "apiKey": "BSALRXc-pBoQVQ3F4DyT9ZU6GHJZGIU"
+      },
+      "fetch": {
+        "enabled": true
+      }
+    },
+    "elevated": {
+      "enabled": false
+    }
+  },
+  "bindings": [
+    {
+      "agentId": "main",
+      "match": {
+        "channel": "telegram",
+        "accountId": "default"
+      }
+    },
+    {
+      "agentId": "ven",
+      "match": {
+        "channel": "telegram",
+        "accountId": "ven"
+      }
+    }
+  ],
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "hooks": {
+    "enabled": true,
+    "path": "/hooks",
+    "token": "find-your-seat-webhook-token-2026",
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "command-logger": {
+          "enabled": true
+        },
+        "session-memory": {
+          "enabled": true
+        },
+        "boot-md": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "groupPolicy": "allowlist",
+      "groupAllowFrom": ["-1003856597413"],
+      "streaming": "partial",
+      "actions": {
+        "reactions": true,
+        "sendMessage": true,
+        "sticker": true
+      },
+      "accounts": {
+        "default": {
+          "dmPolicy": "pairing",
+          "botToken": "8173776865:AAEn5i6PHSmp_8DFMgno2kFE7E0SAX02qFk",
+          "groupPolicy": "allowlist",
+          "groupAllowFrom": ["-1003856597413"],
+          "streaming": "partial"
+        },
+        "ven": {
+          "dmPolicy": "pairing",
+          "botToken": "8142770947:AAG-F7DY44yN8DJ-Hc8L2Rw_-WxKyHDVfUQ",
+          "groupPolicy": "allowlist",
+          "groupAllowFrom": ["-1003856597413"],
+          "streaming": "partial"
+        }
+      }
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "controlUi": {
+      "allowedOrigins": [
+        "http://localhost",
+        "http://127.0.0.1"
+      ]
+    },
+    "auth": {
+      "mode": "token",
+      "token": "a0cec356b67499e2a19027d920f838ae617315b1d08cb30c"
+    },
+    "trustedProxies": [],
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true
+      }
+    }
+  }
+}
