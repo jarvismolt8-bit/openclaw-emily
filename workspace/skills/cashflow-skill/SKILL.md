@@ -138,7 +138,7 @@ curl -s -X DELETE "http://localhost:3001/api/v1/cashflow/filter" \
 ```
 
 **Filter field values:**
-- `category`: `"All"` | `"Income"` | `"Investment"` | `"Food"` | `"Transport"` | `"Utilities"` | `"Shopping"` | `"Entertainment"` | `"Health"` | `"Airbnb"` | `"Other"`
+- `category`: `"All"` | `"Income"` | `"Investment"` | `"Food"` | `"Pet Food"` | `"Transport"` | `"Utilities"` | `"Shopping"` | `"Entertainment"` | `"Health"` | `"Airbnb"` | `"Bank"` | `"Other"` | `"Clothing"`
 - `currency`: `"All"` | `"PHP"` | `"USD"` | `"EUR"`
 - `search`: `""` or a search term
 
@@ -159,6 +159,7 @@ curl -s -X DELETE "http://localhost:3001/api/v1/cashflow/filter" \
 | Entertainment | movies, games, Netflix, streaming |
 | Health | medicine, doctor, gym, pharmacy |
 | Airbnb | Airbnb hosting expenses |
+| Bank | bank, transfer, withdrawal, deposit, ATM, BPI, BDO, Metrobank, wire |
 | Other | anything that doesn't fit above |
 
 ---

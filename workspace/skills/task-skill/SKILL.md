@@ -21,6 +21,7 @@ Manage tasks by calling the API. **Always execute the curl command and wait for 
 | done / completed / finished | `done` |
 | working on / started / in progress | `in_progress` |
 | backlog / not started / todo | `backlog` |
+| archive / archived / archive it | `archive` |
 
 ## Operations
 
@@ -42,6 +43,16 @@ curl -X PUT "http://localhost:3001/api/v1/tasks/<id>" \
   -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
   -H "X-Source: telegram" \
   -d '{"status":"done"}'
+```
+
+### ARCHIVE — triggers: "archive task", "archive it", "move to archive"
+Tasks archived for 30+ days are automatically deleted. Use to declutter done tasks.
+```bash
+curl -X PUT "http://localhost:3001/api/v1/tasks/<id>" \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-Source: telegram" \
+  -d '{"status":"archive"}'
 ```
 
 ### EDIT — triggers: "edit task", "update task", "change task"
@@ -80,8 +91,9 @@ Display format:
 🔴📋 001 | Submit report | Mar 6 2026 | 3:00pm
 🔵🔄 002 | Build app | Mar 7 2026 | 6:00pm
 🟢✅ 003 | Read book
+⚫📦 004 | Old task archived
 ```
-Priority: 🔴 high · 🔵 medium · 🟢 low | Status: 📋 backlog · 🔄 in_progress · ✅ done
+Priority: 🔴 high · 🔵 medium · 🟢 low | Status: 📋 backlog · 🔄 in_progress · ✅ done · 📦 archive
 
 ### FILTER WEB APP — triggers: "filter web app", "show only X in web app"
 ```bash
@@ -97,4 +109,4 @@ curl -X DELETE "http://localhost:3001/api/v1/tasks/filter" \
   -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
   -H "X-Source: telegram"
 ```
-Filter fields: `status` (backlog/in_progress/done/""), `priority` (high/medium/low/""), `search` (text/"")
+Filter fields: `status` (backlog/in_progress/done/archive/""), `priority` (high/medium/low/""), `search` (text/"")

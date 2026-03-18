@@ -17,7 +17,7 @@ Specialized tool for analyzing Airbnb prices in Philippines locations. Perfect f
 
 **Use this exact command format:**
 ```bash
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py [command] [options]
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py [command] [options]
 ```
 
 **Note:** This is the ONLY way to execute commands. Do not use `crawl4ai`, `airbnb-crawler`, or any other shortcuts.
@@ -37,7 +37,7 @@ Specialized tool for analyzing Airbnb prices in Philippines locations. Perfect f
 
 ### 1. List Available Locations
 ```bash
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py locations
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py locations
 ```
 
 Output:
@@ -51,17 +51,17 @@ Output:
 
 ### 2. Search Prices for Specific Dates
 ```bash
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search --location cdo --check-in 2026-03-01 --check-out 2026-03-03
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search --location cdo --check-in 2026-03-01 --check-out 2026-03-03
 ```
 
 ### 3. Compare Weekend Prices
 ```bash
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare --location cdo --weekends 4
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare --location cdo --weekends 4
 ```
 
 ### 4. Generate Full Report
 ```bash
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py report --location cdo --check-in 2026-03-01 --check-out 2026-03-03 --output /root/.openclaw/workspace/crawl4ai_outputs/cdo_report.txt
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py report --location cdo --check-in 2026-03-01 --check-out 2026-03-03 --output /root/.openclaw/workspace/crawl4ai_outputs/cdo_report.txt
 ```
 
 ## Commands
@@ -84,13 +84,13 @@ Search Airbnb listings for a specific location and dates.
 
 ```bash
 # Basic search for 2 guests
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -i 2026-03-01 -o 2026-03-03
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -i 2026-03-01 -o 2026-03-03
 
 # Search with filters
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cebu -i 2026-04-15 -o 2026-04-17 -g 4 -r entire --price-max 5000
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cebu -i 2026-04-15 -o 2026-04-17 -g 4 -r entire --price-max 5000
 
 # Save to file
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l manila -i 2026-05-01 -o 2026-05-03 --output /root/.openclaw/workspace/crawl4ai_outputs/manila_search.json
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l manila -i 2026-05-01 -o 2026-05-03 --output /root/.openclaw/workspace/crawl4ai_outputs/manila_search.json
 ```
 
 **Output:**
@@ -120,13 +120,13 @@ Compare pricing across multiple weekends to identify trends.
 
 ```bash
 # Compare next 4 weekends
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l cdo --weekends 4
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l cdo --weekends 4
 
 # Compare entire homes only
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l cebu -r entire --weekends 8
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l cebu -r entire --weekends 8
 
 # Save comparison
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l manila --weekends 6 --output /root/.openclaw/workspace/crawl4ai_outputs/price_comparison.json
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l manila --weekends 6 --output /root/.openclaw/workspace/crawl4ai_outputs/price_comparison.json
 ```
 
 **Shows:**
@@ -150,10 +150,10 @@ Create a detailed pricing report with statistics and recommendations.
 
 ```bash
 # Generate report for CDO
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py report -l cdo -i 2026-03-01 -o 2026-03-03 -f /root/.openclaw/workspace/crawl4ai_outputs/cdo_march_report.txt
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py report -l cdo -i 2026-03-01 -o 2026-03-03 -f /root/.openclaw/workspace/crawl4ai_outputs/cdo_march_report.txt
 
 # Report for entire homes only
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py report -l cebu -i 2026-04-01 -o 2026-04-03 -r entire -f /root/.openclaw/workspace/crawl4ai_outputs/cebu_entire_homes.txt
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py report -l cebu -i 2026-04-01 -o 2026-04-03 -r entire -f /root/.openclaw/workspace/crawl4ai_outputs/cebu_entire_homes.txt
 ```
 
 **Sample Report Output:**
@@ -230,13 +230,13 @@ Get detailed information about a specific Airbnb listing.
 
 ```bash
 # Get details by URL
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py details -u "https://airbnb.com/rooms/123456789"
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py details -u "https://airbnb.com/rooms/123456789"
 
 # Get details with pricing
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py details -u "https://airbnb.com/rooms/123456789" -i 2026-03-01 -o 2026-03-03
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py details -u "https://airbnb.com/rooms/123456789" -i 2026-03-01 -o 2026-03-03
 
 # Get details by ID
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py details --id 123456789 --output /root/.openclaw/workspace/crawl4ai_outputs/listing_details.json
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py details --id 123456789 --output /root/.openclaw/workspace/crawl4ai_outputs/listing_details.json
 ```
 
 ## Emily Integration
@@ -248,7 +248,7 @@ Emily can use this tool to help analyze Airbnb pricing. Here are example command
 User: Check Airbnb prices in CDO for March 1-3
 
 Emily should execute:
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -i 2026-03-01 -o 2026-03-03
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -i 2026-03-01 -o 2026-03-03
 
 Then report: "Found 47 listings in CDO. Average price is ₱2,850/night. 
    Range: ₱1,200 - ₱8,500. Entire homes average ₱3,500."
@@ -259,7 +259,7 @@ Then report: "Found 47 listings in CDO. Average price is ₱2,850/night.
 User: Compare Airbnb prices in Cebu for the next 4 weekends
 
 Emily should execute:
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l cebu --weekends 4
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l cebu --weekends 4
 
 Then report: "Weekend prices in Cebu range from ₱2,200-₱2,800. 
    March 14-16 is the most expensive at ₱2,800 average."
@@ -270,7 +270,7 @@ Then report: "Weekend prices in Cebu range from ₱2,200-₱2,800.
 User: Create a pricing report for CDO
 
 Emily should execute:
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py report -l cdo -i 2026-03-01 -o 2026-03-03 -f /root/.openclaw/workspace/crawl4ai_outputs/cdo_report.txt
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py report -l cdo -i 2026-03-01 -o 2026-03-03 -f /root/.openclaw/workspace/crawl4ai_outputs/cdo_report.txt
 
 Then report: "Report generated and saved to /root/.openclaw/workspace/crawl4ai_outputs/cdo_report.txt"
 ```
@@ -280,7 +280,7 @@ Then report: "Report generated and saved to /root/.openclaw/workspace/crawl4ai_o
 ### 1. Know Your Competition
 ```bash
 # Search for properties similar to yours
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -r entire -g 4 -i 2026-03-01 -o 2026-03-03
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -r entire -g 4 -i 2026-03-01 -o 2026-03-03
 ```
 
 **Look for:**
@@ -291,16 +291,16 @@ Then report: "Report generated and saved to /root/.openclaw/workspace/crawl4ai_o
 ### 2. Compare Weekends vs Weekdays
 ```bash
 # Weekend (Friday-Sunday)
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -i 2026-03-08 -o 2026-03-10
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -i 2026-03-08 -o 2026-03-10
 
 # Weekday (Monday-Wednesday)
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -i 2026-03-11 -o 2026-03-13
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -i 2026-03-11 -o 2026-03-13
 ```
 
 ### 3. Track Seasonal Trends
 ```bash
 # Compare different months
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l cdo --weekends 12 --output /root/.openclaw/workspace/crawl4ai_outputs/seasonal_trends.json
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l cdo --weekends 12 --output /root/.openclaw/workspace/crawl4ai_outputs/seasonal_trends.json
 ```
 
 ### 4. Price Positioning
@@ -327,13 +327,13 @@ All commands support JSON export for further analysis:
 
 ```bash
 # Export search results
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -i 2026-03-01 -o 2026-03-03 --output /root/.openclaw/workspace/crawl4ai_outputs/cdo_listings.json
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -i 2026-03-01 -o 2026-03-03 --output /root/.openclaw/workspace/crawl4ai_outputs/cdo_listings.json
 
 # Export comparison
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l cebu --weekends 8 --output /root/.openclaw/workspace/crawl4ai_outputs/price_trends.json
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l cebu --weekends 8 --output /root/.openclaw/workspace/crawl4ai_outputs/price_trends.json
 
 # Export listing details
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py details -u "URL" --output /root/.openclaw/workspace/crawl4ai_outputs/competitor.json
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py details -u "URL" --output /root/.openclaw/workspace/crawl4ai_outputs/competitor.json
 ```
 
 **Analyze with Python:**
@@ -358,27 +358,27 @@ print(df.groupby('room_type')['price'].mean())
 ### 1. Setting Initial Price
 ```bash
 # Research market before listing
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py report -l cdo -i 2026-04-01 -o 2026-04-03 -f /root/.openclaw/workspace/crawl4ai_outputs/market_research.txt
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py report -l cdo -i 2026-04-01 -o 2026-04-03 -f /root/.openclaw/workspace/crawl4ai_outputs/market_research.txt
 ```
 
 ### 2. Monthly Price Check
 ```bash
 # Run monthly to stay competitive
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l cdo --weekends 4
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py compare -l cdo --weekends 4
 ```
 
 ### 3. Competitor Monitoring
 ```bash
 # Track specific listings
 # Save listing IDs and check periodically
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py details --id 123456789 --output /root/.openclaw/workspace/crawl4ai_outputs/competitor_123456.json
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py details --id 123456789 --output /root/.openclaw/workspace/crawl4ai_outputs/competitor_123456.json
 ```
 
 ### 4. Peak Season Pricing
 ```bash
 # Check prices during Sinulog, Holy Week, Christmas
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cebu -i 2026-01-17 -o 2026-01-19  # Sinulog weekend
-/root/.openclaw/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -i 2026-04-02 -o 2026-04-04    # Holy Week
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cebu -i 2026-01-17 -o 2026-01-19  # Sinulog weekend
+/root/.openclaw/workspace/crawl4ai_env/bin/python /root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py search -l cdo -i 2026-04-02 -o 2026-04-04    # Holy Week
 ```
 
 ## File Locations
@@ -386,7 +386,7 @@ print(df.groupby('room_type')['price'].mean())
 **All within /root/.openclaw/workspace/ (Emily's sandbox):**
 
 - **Main Script**: `/root/.openclaw/workspace/skills/airbnb-crawl-skill/airbnb_pricing.py`
-- **Python**: `/root/.openclaw/crawl4ai_env/bin/python`
+- **Python**: `/root/.openclaw/workspace/crawl4ai_env/bin/python`
 - **Outputs**: `/root/.openclaw/workspace/crawl4ai_outputs/`
 - **Documentation**: `/root/.openclaw/workspace/skills/airbnb-crawl-skill/SKILL.md`
 
@@ -402,7 +402,7 @@ print(df.groupby('room_type')['price'].mean())
 - All workspace files should be accessible
 
 ### "No module named pyairbnb"
-- Python must be from crawl4ai_env: `/root/.openclaw/crawl4ai_env/bin/python`
+- Python must be from crawl4ai_env: `/root/.openclaw/workspace/crawl4ai_env/bin/python`
 - Don't use system Python
 
 ### Script hangs
