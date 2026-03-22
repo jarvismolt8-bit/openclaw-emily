@@ -425,54 +425,9 @@ config = CrawlerRunConfig(
 - **batch_crawler.py** - Multi-URL concurrent processing
 
 ### references/
-- **complete-sdk-reference.md** - Complete SDK documentation (23K words) with all parameters, methods, and advanced features
+- **complete-sdk-reference.md** - SDK documentation with all parameters, methods, and advanced features. Located in `references/` directory.
 
-### Example Code Repository
-
-The Crawl4AI repository includes extensive examples in `docs/examples/`:
-
-#### Core Examples
-- **quickstart.py** - Comprehensive starter with all basic patterns:
-  - Simple crawling, JavaScript execution, CSS selectors
-  - Content filtering, link analysis, media handling
-  - LLM extraction, CSS extraction, dynamic content
-  - Browser comparison, SSL certificates
-
-#### Specialized Examples
-- **amazon_product_extraction_*.py** - Three approaches for e-commerce scraping
-- **extraction_strategies_examples.py** - All extraction strategies demonstrated
-- **deepcrawl_example.py** - Advanced deep crawling patterns
-- **crypto_analysis_example.py** - Complex data extraction with analysis
-- **parallel_execution_example.py** - High-performance concurrent crawling
-- **session_management_example.py** - Authentication and session handling
-- **markdown_generation_example.py** - Advanced markdown customization
-- **hooks_example.py** - Custom hooks for crawl lifecycle events
-- **proxy_rotation_example.py** - Proxy management and rotation
-- **router_example.py** - Request routing and URL patterns
-
-#### Advanced Patterns
-- **adaptive_crawling/** - Intelligent crawling strategies
-- **c4a_script/** - C4A script examples
-- **docker_*.py** - Docker deployment patterns
-
-To explore examples:
-```python
-# The examples are located in your Crawl4AI installation:
-# Look in: docs/examples/ directory
-
-# Start with quickstart.py for comprehensive patterns
-# It includes: simple crawl, JS execution, CSS selectors,
-# content filtering, LLM extraction, dynamic pages, and more
-
-# For specific use cases:
-# - E-commerce: amazon_product_extraction_*.py
-# - High performance: parallel_execution_example.py
-# - Authentication: session_management_example.py
-# - Deep crawling: deepcrawl_example.py
-
-# Run any example directly:
-# python docs/examples/quickstart.py
-```
+For more examples, see the Crawl4AI repository `docs/examples/` directory. Start with `quickstart.py`.
 
 ## Best Practices
 
@@ -486,288 +441,53 @@ To explore examples:
 
 ## Troubleshooting
 
-**JavaScript not loading:**
-```python
-config = CrawlerRunConfig(
-    wait_for="css:.dynamic-content",  # Wait for specific element
-    page_timeout=60000  # Increase timeout
-)
-```
+**JavaScript not loading:** Use `wait_for` to wait for a specific element, and increase `page_timeout` to 60000.
 
-**Bot detection issues:**
-```python
-browser_config = BrowserConfig(
-    headless=False,  # Sometimes visible browsing helps
-    viewport_width=1920,
-    viewport_height=1080,
-    user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-)
-# Add delays between requests
-await asyncio.sleep(random.uniform(2, 5))
-```
+**Bot detection:** Rotate user agents, add delays between requests, use appropriate viewport sizes.
 
-**Content extraction problems:**
-```python
-# Debug what's being extracted
-result = await crawler.arun(url)
-print(f"HTML length: {len(result.html)}")
-print(f"Markdown length: {len(result.markdown)}")
-print(f"Links found: {len(result.links)}")
+**Content extraction:** Debug by checking `result.html`, `result.markdown`, and `result.links` lengths. Use `wait_for` with CSS selectors or JS conditions.
 
-# Try different wait strategies
-config = CrawlerRunConfig(
-    wait_for="js:document.querySelector('.content') !== null"
-)
-```
-
-**Session/auth issues:**
-```python
-# Verify session is maintained
-config = CrawlerRunConfig(session_id="test_session")
-result = await crawler.arun(url, config=config)
-print(f"Session ID: {result.session_id}")
-print(f"Cookies: {result.cookies}")
-```
+**Session/auth:** Use `session_id` to maintain sessions across requests.
 
 ## Structured Data Extraction from Markdown
 
-### Overview
-
-One of Crawl4AI's most powerful features is extracting structured data (articles, products, listings) from markdown content using pattern matching. This approach is fast, efficient, and doesn't require LLM costs.
-
-### The Pattern-Based Extraction Workflow
-
-When extracting structured data from markdown:
-
-1. **Fetch Raw Markdown** - Use crawl4ai to get clean markdown
-2. **Inspect Structure** - Look at actual output, don't assume format
-3. **Identify Pattern** - Find repeating structure (titles, URLs, content)
-4. **Apply Pattern** - Use predefined or custom regex pattern
-5. **Clean Results** - Remove trailing links, whitespace, captions
-6. **Validate** - Check extracted data makes sense
+Extract structured data (articles, products, listings) from markdown using pattern matching. Fast, efficient, and LLM-free.
 
 ### Using the Pattern Library
 
 ```python
 from patterns import extract_articles, list_patterns, discover_pattern
 
-# Option 1: Use a predefined pattern
-articles = extract_articles(
-    markdown=result.markdown,
-    pattern_name='nbc_news'  # or 'generic_article', 'dated_article', etc.
-)
+# Use a predefined pattern
+articles = extract_articles(markdown=result.markdown, pattern_name='generic_article')
 
-# Option 2: Auto-discover best pattern
+# Auto-discover best pattern
 suggestions = discover_pattern(result.markdown)
-# Returns: [('nbc_news', 15), ('generic_article', 8), ...]
 
-# Option 3: Use custom pattern
+# Use custom regex pattern
 articles = extract_articles(
     markdown=result.markdown,
     custom_pattern=r'## \[(.+?)\]\((https?://[^)]+)\)\n(.*?)',
     custom_flags=re.DOTALL | re.MULTILINE
 )
-```
 
-### Available Patterns
-
-```python
-from patterns import list_patterns
-
-# List all available patterns
-patterns = list_patterns()
-# {
-#     'nbc_news': 'NBC News article format with title, URL, and multi-line summary',
-#     'generic_article': 'Generic markdown article with title link and summary',
-#     'dated_article': 'Articles with date prefix before title',
-#     'list_article': 'Bullet list format with bold title, link, and description',
-#     'product_listing': 'Product listings with name, price, and URL'
-# }
-```
-
-### Pattern Structure Explained
-
-The NBC News pattern that successfully extracted articles:
-
-```python
-pattern = r'## \[(.+?)\]\((https?://www\.nbcnews\.com/[^)]+)\)\n(.*?)'
-          r'(?=\n## |\n\* \* \* |$)'
-```
-
-**Breaking it down:**
-- `## \[(.+?)\]` - Matches markdown H2 with link: `## [Title]`
-- `\((https?://...)\)` - Captures URL in parentheses
-- `\n(.*?)` - Captures summary text after newline (non-greedy)
-- `(?=\n## |...|$)` - Lookahead: stop at next article, separator, or end
-- `re.DOTALL` - Makes `.` match newlines (for multi-line summaries)
-- `re.MULTILINE` - Makes `^` and `$` match line boundaries
-
-### Cleaning Extracted Content
-
-```python
+# Clean extracted summaries
 from patterns import clean_summary
-
-# Clean up extracted summaries
 for article in articles:
-    article['summary'] = clean_summary(
-        article['summary'],
-        remove_links=True,      # Remove [Read More] links
-        remove_images=True      # Remove image captions
-    )
+    article['summary'] = clean_summary(article['summary'])
 ```
 
-### Complete Example: Article Extraction
-
-```python
-import asyncio
-from crawl4ai import AsyncWebCrawler, CrawlerRunConfig, CacheMode
-from patterns import extract_articles, clean_summary
-import json
-
-async def extract_news_articles(url):
-    # Fetch content
-    async with AsyncWebCrawler() as crawler:
-        result = await crawler.arun(
-            url=url,
-            config=CrawlerRunConfig(cache_mode=CacheMode.BYPASS)
-        )
-        
-        # Extract articles
-        articles = extract_articles(
-            markdown=str(result.markdown),
-            pattern_name='nbc_news'
-        )
-        
-        # Clean summaries
-        for article in articles:
-            article['summary'] = clean_summary(article['summary'])
-        
-        return articles
-
-# Run
-articles = asyncio.run(extract_news_articles("https://www.nbcnews.com/business"))
-print(json.dumps(articles, indent=2))
-```
-
-### Using the Extraction Script
+### Extraction Scripts
 
 ```bash
-# Extract with specific pattern
-python scripts/extract_structured.py https://www.nbcnews.com/business --pattern nbc_news
+# Extract with pattern
+python scripts/extract_structured.py <url> --pattern <pattern_name>
 
 # Auto-discover best pattern
-python scripts/extract_structured.py https://example.com/news --discover
+python scripts/extract_structured.py <url> --discover
 
-# Output as markdown
-python scripts/extract_structured.py https://example.com --output markdown
-
-# Save to file
-python scripts/extract_structured.py https://example.com --output json --file articles.json
-
-# List available patterns
-python scripts/extract_structured.py --list-patterns
+# Output as json or markdown
+python scripts/extract_structured.py <url> --output json --file data.json
 ```
 
-## Case Study: NBC News Article Extraction
 
-### The Challenge
-
-Extract business news articles from NBC News with:
-- Article titles
-- URLs
-- Summaries
-
-### Initial Attempt (Failed)
-
-```python
-# First attempt - assumed simple structure
-pattern = r'## \[(.+?)\]\((.+?)\)\n(.+?)'  # ❌ Too simplistic
-# Problem: Didn't account for multi-line summaries
-# Problem: Didn't handle special characters in URLs
-```
-
-### The Breakthrough
-
-**Step 1: Fetch Raw Markdown**
-```python
-result = await crawler.arun("https://www.nbcnews.com/business")
-markdown = str(result.markdown)
-print(markdown[:2000])  # Inspect first 2000 chars
-```
-
-**Step 2: Analyze Actual Structure**
-```markdown
-## [Article Title](https://www.nbcnews.com/.../article-title)
-Brief summary of the article content that spans
-multiple lines sometimes.
-
-[Read More →](https://www.nbcnews.com/...)
-
-*Image caption text here*
-
----
-```
-
-**Step 3: Identify Issues**
-- Summary spans multiple lines
-- Has trailing `[Read More]` links
-- Contains image captions
-- Articles separated by `---`
-
-**Step 4: Refine Pattern**
-```python
-import re
-
-pattern = re.compile(
-    r'## \[(.+?)\]'                           # Title in brackets
-    r'\((https?://www\.nbcnews\.com/[^)]+)\)' # URL with domain
-    r'\n'                                     # Newline
-    r'(.*?)'                                  # Summary (non-greedy)
-    r'(?=\n## |\n\* \* \* |$)',               # Lookahead: next article or end
-    re.DOTALL | re.MULTILINE                 # Flags for multi-line
-)
-
-matches = pattern.findall(markdown)
-```
-
-**Step 5: Clean Results**
-```python
-def clean_summary(text):
-    # Remove [Read More] links
-    text = re.sub(r'\[Read More.*?\]\(.*?\)', '', text)
-    # Remove image captions
-    text = re.sub(r'!\[.*?\]\(.*?\)', '', text)
-    # Collapse multiple newlines
-    text = re.sub(r'\n{3,}', '\n\n', text)
-    return text.strip()
-
-articles = []
-for title, url, summary in matches:
-    articles.append({
-        'title': title,
-        'url': url,
-        'summary': clean_summary(summary)
-    })
-```
-
-### Result
-
-Successfully extracted 20+ articles with clean titles, URLs, and summaries.
-
-### Key Lessons
-
-1. **Never assume structure** - Always inspect actual markdown output
-2. **Use DOTALL flag** - For multi-line content capture
-3. **Lookaheads are powerful** - `(?=...)` stops capture without consuming
-4. **Clean after extract** - Remove trailing links, captions, whitespace
-5. **Iterate and test** - Run, inspect, refine, repeat
-
-### Reusable Pattern
-
-This approach now works for similar news sites:
-- Inspect markdown structure
-- Adapt the regex pattern
-- Apply cleanup functions
-- Validate output
-
-For more details on any topic, refer to `references/complete-sdk-reference.md` which contains comprehensive documentation of all features, parameters, and advanced usage patterns.

@@ -1,74 +1,57 @@
 ---
 name: cashflow-skill
-description: Track expenses and income by chatting naturally. Use this skill whenever the user mentions spending money, buying something, receiving income, salary, or wants to view, filter, update, or delete cashflow transactions. Triggers on any financial tracking request — even casual phrasing like "I bought X" or "show my expenses".
+description: Track expenses/income via chat. Auto-categorizes Airbnb, Bank, Health. Defaults to expense unless income keyword detected.
 ---
 
 # Cashflow Manager
 
-Track expenses and income via a local backend API. All operations require executing real curl commands — never simulate or skip them.
-
-## API Configuration
-
-| Setting | Value |
-|---|---|
-| Base URL | `http://localhost:3001/api/v1/cashflow` |
-| X-API-Key | `cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7` |
-| X-Source | `telegram` |
-| Content-Type | `application/json` |
-
-All responses follow this envelope:
-```json
-{ "success": true, "data": { ... } }
-{ "success": false, "error": { "code": "...", "message": "..." } }
-```
+API: `http://localhost:3001/api/v1/cashflow`  
+Key: `cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7`  
+Source: `telegram`
 
 ---
 
-## Operations
+## ADD
 
-### ADD a Transaction
+**1. Parse message (case-insensitive):**
 
-**Step 1 — Parse the user's message:**
+| Detect | Result |
+|--------|--------|
+| salary, received, earned, freelance, bonus, refund, income | **Income** (positive amount) |
+| airbnb, bank, transfer, withdrawal, deposit, ATM, BPI, BDO | **Bank** |
+| health, medicine, doctor, gym, pharmacy, hospital | **Health** |
+| lunch, dinner, coffee, snack, groceries | **Food** |
+| gas, Grab, Uber, taxi, bus, parking | **Transport** |
+| electricity, water, internet, phone bill | **Utilities** |
+| clothes, gadgets, Amazon, mall | **Shopping** |
+| movies, games, Netflix, streaming | **Entertainment** |
+| **none detected** | Ask: "What's the category?" |
 
-| Field | Rule |
-|---|---|
-| `item` | Name of the purchase or income source |
-| `amount` | **Negative** for expenses, **positive** for income |
-| `currency` | PHP (default), USD, EUR |
-| `category` | See category list below |
-| `date` / `time` | Get current Philippine time (UTC+8) |
+**2. Amount:** Negative (expense) unless income keyword → positive.
 
-**Step 2 — Get current PH date/time:**
-```bash
-TZ='Asia/Manila' date '+%Y-%m-%d %l:%M%p'
-```
+**3. Get PH time:** `TZ='Asia/Manila' date '+%Y-%m-%d %l:%M%p'`
 
-**Step 3 — Execute the POST:**
+**4. Execute:**
 ```bash
 curl -s -X POST "http://localhost:3001/api/v1/cashflow" \
   -H "Content-Type: application/json" \
   -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
   -H "X-Source: telegram" \
-  -d '{
-    "item": "ITEM_NAME",
-    "amount": -AMOUNT,
-    "currency": "PHP",
-    "date": "YYYY-MM-DD",
-    "time": "H:MMam/pm",
-    "category": "CATEGORY"
-  }'
+  -d '{"item":"ITEM","amount":-AMOUNT,"currency":"PHP","date":"YYYY-MM-DD","time":"H:MMam/pm","category":"CATEGORY"}'
 ```
 
-**Step 4 — Confirm only after seeing `"success": true` in the response.**
+**5. Confirm only on `"success": true`**
 
 **Examples:**
-- "Bought ice cream 450php" → `item: "Ice cream", amount: -450, category: "Food"`
-- "Received salary 25000php" → `item: "Salary", amount: 25000, category: "Income"`
-- "Grab ride 150" → `item: "Grab", amount: -150, category: "Transport"`
+- "airbnb clean 280" → item: "Airbnb cleaning", amount: -280, category: "Airbnb"
+- "Bank transfer 5000" → item: "Bank transfer", amount: -5000, category: "Bank"
+- "Health medicine 150" → item: "Medicine", amount: -150, category: "Health"
+- "salary 25000" → item: "Salary", amount: 25000, category: "Income"
+- "grab 80" → item: "Grab", amount: -80, category: "Transport"
 
 ---
 
-### VIEW Transactions
+## VIEW
 
 ```bash
 curl -s -X GET "http://localhost:3001/api/v1/cashflow" \
@@ -76,38 +59,18 @@ curl -s -X GET "http://localhost:3001/api/v1/cashflow" \
   -H "X-Source: telegram"
 ```
 
-**Sort options** (append as query params):
-
-| User says | Query params |
-|---|---|
-| "highest first" | `?sortBy=amount&sortOrder=desc` |
-| "oldest first" | `?sortBy=date&sortOrder=asc` |
-| "most recent" | `?sortBy=date&sortOrder=desc` |
-| "by category" | `?sortBy=category&sortOrder=asc` |
+Sort: `?sortBy=amount&sortOrder=desc` (highest), `?sortBy=date&sortOrder=desc` (recent)
 
 ---
 
-### UPDATE a Transaction
+## UPDATE
 
-**Step 1 — Find the entry ID:**
-```bash
-curl -s -X GET "http://localhost:3001/api/v1/cashflow?search=ITEM_NAME" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
-  -H "X-Source: telegram"
-```
-
-**Step 2 — Update with PUT:**
-```bash
-curl -s -X PUT "http://localhost:3001/api/v1/cashflow/ENTRY_ID" \
-  -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
-  -H "X-Source: telegram" \
-  -d '{"amount": -NEW_AMOUNT}'
-```
+1. Find ID: `curl ...?search=ITEM_NAME`
+2. Update: `curl -s -X PUT ".../ENTRY_ID" -H "Content-Type: application/json" -d '{"amount":-NEW}'`
 
 ---
 
-### DELETE a Transaction
+## DELETE
 
 ```bash
 curl -s -X DELETE "http://localhost:3001/api/v1/cashflow/ENTRY_ID" \
@@ -117,58 +80,20 @@ curl -s -X DELETE "http://localhost:3001/api/v1/cashflow/ENTRY_ID" \
 
 ---
 
-### FILTER the Web App Table
+## FILTER WEB APP
 
-Use this when the user says "filter the web app" or "update the web app table". This persists until cleared.
+Apply: `curl -s -X POST ".../filter" -d '{"category":"Food","currency":"All","search":""}'`  
+Clear: `curl -s -X DELETE ".../filter"`
 
-**Apply a filter:**
-```bash
-curl -s -X POST "http://localhost:3001/api/v1/cashflow/filter" \
-  -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
-  -H "X-Source: telegram" \
-  -d '{"category": "Food", "currency": "All", "search": ""}'
-```
-
-**Clear the filter:**
-```bash
-curl -s -X DELETE "http://localhost:3001/api/v1/cashflow/filter" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
-  -H "X-Source: telegram"
-```
-
-**Filter field values:**
-- `category`: `"All"` | `"Income"` | `"Investment"` | `"Food"` | `"Pet Food"` | `"Transport"` | `"Utilities"` | `"Shopping"` | `"Entertainment"` | `"Health"` | `"Airbnb"` | `"Bank"` | `"Other"` | `"Clothing"`
-- `currency`: `"All"` | `"PHP"` | `"USD"` | `"EUR"`
-- `search`: `""` or a search term
-
-> If the user says "filter the web app by Food" → POST filter. Confirm: "Done! Web app table updated."
-> If the user just wants to see filtered results in chat → use GET with query params instead.
+Categories: Income, Investment, Food, Pet Food, Transport, Utilities, Shopping, Entertainment, Health, Airbnb, Bank, Other, Clothing
 
 ---
 
-## Category Reference
+## RULES
 
-| Category | Keywords |
-|---|---|
-| Income | salary, freelance, bonus, gift, refund, earned, received |
-| Food | lunch, dinner, coffee, snack, groceries, restaurant |
-| Transport | gas, taxi, Grab, Uber, bus, parking |
-| Utilities | electricity, water, internet, phone bill |
-| Shopping | clothes, gadgets, Amazon, mall |
-| Entertainment | movies, games, Netflix, streaming |
-| Health | medicine, doctor, gym, pharmacy |
-| Airbnb | Airbnb hosting expenses |
-| Bank | bank, transfer, withdrawal, deposit, ATM, BPI, BDO, Metrobank, wire |
-| Other | anything that doesn't fit above |
-
----
-
-## Rules
-
-- Always **execute** the curl command — never pretend you did
-- Always **wait for the API response** before confirming to the user
-- Only confirm success after seeing `"success": true`
-- Expenses → **negative** amount; Income → **positive** amount
-- Default currency is **PHP**
-- Always use **Philippine Time (UTC+8)** for date and time
+- Execute real curl — never simulate
+- Wait for response before confirming
+- Expenses = negative, Income = positive
+- Default currency: PHP
+- Use Philippine Time (UTC+8)
+- Ask for clarification if category unclear

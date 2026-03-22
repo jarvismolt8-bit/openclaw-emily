@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.3.1",
-    "lastTouchedAt": "2026-03-03T16:45:37.703Z"
+    "lastTouchedVersion": "2026.3.13",
+    "lastTouchedAt": "2026-03-22T01:54:35.735Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-03T16:20:03.707Z",
@@ -58,8 +58,15 @@
             "id": "deepseek-ai/DeepSeek-R1",
             "name": "DeepSeek R1",
             "reasoning": true,
-            "input": ["text"],
-            "cost": { "input": 3, "output": 7, "cacheRead": 3, "cacheWrite": 3 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 3,
+              "output": 7,
+              "cacheRead": 3,
+              "cacheWrite": 3
+            },
             "contextWindow": 131072,
             "maxTokens": 8192
           },
@@ -67,8 +74,15 @@
             "id": "deepseek-ai/DeepSeek-V3.2",
             "name": "DeepSeek V3.2",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0.6, "output": 1.25, "cacheRead": 0.6, "cacheWrite": 0.6 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.6,
+              "output": 1.25,
+              "cacheRead": 0.6,
+              "cacheWrite": 0.6
+            },
             "contextWindow": 131072,
             "maxTokens": 8192
           },
@@ -76,8 +90,15 @@
             "id": "meta-llama/Llama-3.3-70B-Instruct",
             "name": "Llama 3.3 70B Instruct",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0.88, "output": 0.88, "cacheRead": 0.88, "cacheWrite": 0.88 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.88,
+              "output": 0.88,
+              "cacheRead": 0.88,
+              "cacheWrite": 0.88
+            },
             "contextWindow": 131072,
             "maxTokens": 8192
           },
@@ -85,8 +106,15 @@
             "id": "meta-llama/Llama-3.1-8B-Instruct",
             "name": "Llama 3.1 8B Instruct",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0.18, "output": 0.18, "cacheRead": 0.18, "cacheWrite": 0.18 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.18,
+              "output": 0.18,
+              "cacheRead": 0.18,
+              "cacheWrite": 0.18
+            },
             "contextWindow": 131072,
             "maxTokens": 8192
           },
@@ -94,8 +122,15 @@
             "id": "Qwen/Qwen3-8B",
             "name": "Qwen3 8B",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0.1, "output": 0.1, "cacheRead": 0.1, "cacheWrite": 0.1 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.1,
+              "output": 0.1,
+              "cacheRead": 0.1,
+              "cacheWrite": 0.1
+            },
             "contextWindow": 131072,
             "maxTokens": 8192
           },
@@ -103,8 +138,15 @@
             "id": "Qwen/Qwen3-32B",
             "name": "Qwen3 32B",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0.4, "output": 0.4, "cacheRead": 0.4, "cacheWrite": 0.4 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.4,
+              "output": 0.4,
+              "cacheRead": 0.4,
+              "cacheWrite": 0.4
+            },
             "contextWindow": 131072,
             "maxTokens": 8192
           },
@@ -112,8 +154,15 @@
             "id": "Qwen/Qwen2.5-7B-Instruct",
             "name": "Qwen2.5 7B Instruct",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0.1, "output": 0.1, "cacheRead": 0.1, "cacheWrite": 0.1 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.1,
+              "output": 0.1,
+              "cacheRead": 0.1,
+              "cacheWrite": 0.1
+            },
             "contextWindow": 131072,
             "maxTokens": 8192
           },
@@ -121,8 +170,15 @@
             "id": "openai/gpt-oss-120b",
             "name": "GPT-OSS 120B",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
             "contextWindow": 131072,
             "maxTokens": 8192
           },
@@ -130,8 +186,15 @@
             "id": "moonshotai/Kimi-K2.5",
             "name": "Kimi K2.5",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0.5, "output": 1.0, "cacheRead": 0.5, "cacheWrite": 0.5 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.5,
+              "output": 1,
+              "cacheRead": 0.5,
+              "cacheWrite": 0.5
+            },
             "contextWindow": 131072,
             "maxTokens": 8192
           },
@@ -139,8 +202,15 @@
             "id": "zai-org/GLM-4.7",
             "name": "GLM 4.7",
             "reasoning": false,
-            "input": ["text"],
-            "cost": { "input": 0.1, "output": 0.1, "cacheRead": 0.1, "cacheWrite": 0.1 },
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.1,
+              "output": 0.1,
+              "cacheRead": 0.1,
+              "cacheWrite": 0.1
+            },
             "contextWindow": 131072,
             "maxTokens": 8192
           }
@@ -202,16 +272,36 @@
         "openrouter/arcee-ai/trinity-mini:free": {
           "alias": "Trinity Mini"
         },
-        "huggingface/deepseek-ai/DeepSeek-R1": { "alias": "HF DeepSeek R1" },
-        "huggingface/deepseek-ai/DeepSeek-V3.2": { "alias": "HF DeepSeek V3.2" },
-        "huggingface/meta-llama/Llama-3.3-70B-Instruct": { "alias": "HF Llama 3.3 70B" },
-        "huggingface/meta-llama/Llama-3.1-8B-Instruct": { "alias": "HF Llama 3.1 8B" },
-        "huggingface/Qwen/Qwen3-8B": { "alias": "HF Qwen3 8B" },
-        "huggingface/Qwen/Qwen3-32B": { "alias": "HF Qwen3 32B" },
-        "huggingface/Qwen/Qwen2.5-7B-Instruct": { "alias": "HF Qwen2.5 7B" },
-        "huggingface/openai/gpt-oss-120b": { "alias": "HF GPT-OSS 120B" },
-        "huggingface/moonshotai/Kimi-K2.5": { "alias": "HF Kimi K2.5" },
-        "huggingface/zai-org/GLM-4.7": { "alias": "HF GLM 4.7" }
+        "huggingface/deepseek-ai/DeepSeek-R1": {
+          "alias": "HF DeepSeek R1"
+        },
+        "huggingface/deepseek-ai/DeepSeek-V3.2": {
+          "alias": "HF DeepSeek V3.2"
+        },
+        "huggingface/meta-llama/Llama-3.3-70B-Instruct": {
+          "alias": "HF Llama 3.3 70B"
+        },
+        "huggingface/meta-llama/Llama-3.1-8B-Instruct": {
+          "alias": "HF Llama 3.1 8B"
+        },
+        "huggingface/Qwen/Qwen3-8B": {
+          "alias": "HF Qwen3 8B"
+        },
+        "huggingface/Qwen/Qwen3-32B": {
+          "alias": "HF Qwen3 32B"
+        },
+        "huggingface/Qwen/Qwen2.5-7B-Instruct": {
+          "alias": "HF Qwen2.5 7B"
+        },
+        "huggingface/openai/gpt-oss-120b": {
+          "alias": "HF GPT-OSS 120B"
+        },
+        "huggingface/moonshotai/Kimi-K2.5": {
+          "alias": "HF Kimi K2.5"
+        },
+        "huggingface/zai-org/GLM-4.7": {
+          "alias": "HF GLM 4.7"
+        }
       },
       "workspace": "/root/.openclaw/workspace/",
       "maxConcurrent": 4,
@@ -228,6 +318,12 @@
         "name": "ven",
         "workspace": "/root/.openclaw/workspace-ven",
         "agentDir": "/root/.openclaw/agents/ven/agent"
+      },
+      {
+        "id": "rick",
+        "name": "Rick",
+        "workspace": "/root/.openclaw/workspaces/rick",
+        "agentDir": "/root/.openclaw/agents/rick/agent"
       }
     ]
   },
@@ -241,6 +337,9 @@
       "fetch": {
         "enabled": true
       }
+    },
+    "sessions": {
+      "visibility": "all"
     },
     "elevated": {
       "enabled": false
@@ -259,6 +358,13 @@
       "match": {
         "channel": "telegram",
         "accountId": "ven"
+      }
+    },
+    {
+      "agentId": "rick",
+      "match": {
+        "channel": "telegram",
+        "accountId": "rick"
       }
     }
   ],
@@ -297,8 +403,10 @@
     "telegram": {
       "enabled": true,
       "dmPolicy": "pairing",
+      "groupAllowFrom": [
+        "-1003856597413"
+      ],
       "groupPolicy": "allowlist",
-      "groupAllowFrom": ["-1003856597413"],
       "streaming": "partial",
       "actions": {
         "reactions": true,
@@ -309,15 +417,28 @@
         "default": {
           "dmPolicy": "pairing",
           "botToken": "8173776865:AAEn5i6PHSmp_8DFMgno2kFE7E0SAX02qFk",
+          "groupAllowFrom": [
+            "-1003856597413"
+          ],
           "groupPolicy": "allowlist",
-          "groupAllowFrom": ["-1003856597413"],
           "streaming": "partial"
         },
         "ven": {
           "dmPolicy": "pairing",
           "botToken": "8142770947:AAG-F7DY44yN8DJ-Hc8L2Rw_-WxKyHDVfUQ",
+          "groupAllowFrom": [
+            "-1003856597413"
+          ],
           "groupPolicy": "allowlist",
-          "groupAllowFrom": ["-1003856597413"],
+          "streaming": "partial"
+        },
+        "rick": {
+          "dmPolicy": "pairing",
+          "botToken": "8702623619:AAFOd8BXqTwnmxTRXdU5zJsrUCxqRKWNuXM",
+          "groupAllowFrom": [
+            "-1003856597413"
+          ],
+          "groupPolicy": "allowlist",
           "streaming": "partial"
         }
       }

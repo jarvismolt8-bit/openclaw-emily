@@ -1,7 +1,7 @@
 ---
 name: markdown-fetch
 description: Convert any URL to clean, token-efficient Markdown using markdown.new service. Optimized for AI agents with 80% token reduction vs HTML.
-metadata: {"openclaw":{"emoji":"📝","requires":[],"primaryEnv":""}}
+
 ---
 
 # Markdown Fetch Skill
