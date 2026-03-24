@@ -89,3 +89,6 @@ completions/
 subagents/
 settings/
 bank/
+
+# Browser runtime data (cache, cookies, sessions — never commit)
+browser/openclaw/user-data/
