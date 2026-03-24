@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-22T01:54:35.735Z"
+    "lastTouchedAt": "2026-03-23T04:22:16.521Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-03T16:20:03.707Z",
@@ -10,7 +10,7 @@
     "lastRunMode": "local"
   },
   "browser": {
-    "enabled": false,
+    "enabled": true,
     "remoteCdpTimeoutMs": 20000,
     "remoteCdpHandshakeTimeoutMs": 25000,
     "executablePath": "/usr/bin/google-chrome",
@@ -55,120 +55,24 @@
         "api": "openai-completions",
         "models": [
           {
-            "id": "deepseek-ai/DeepSeek-R1",
-            "name": "DeepSeek R1",
+            "id": "deepseek-ai/DeepSeek-R1:hf-inference",
+            "name": "DeepSeek R1 (Free)",
             "reasoning": true,
             "input": [
               "text"
             ],
             "cost": {
-              "input": 3,
-              "output": 7,
-              "cacheRead": 3,
-              "cacheWrite": 3
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
             },
             "contextWindow": 131072,
             "maxTokens": 8192
           },
           {
-            "id": "deepseek-ai/DeepSeek-V3.2",
-            "name": "DeepSeek V3.2",
-            "reasoning": false,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0.6,
-              "output": 1.25,
-              "cacheRead": 0.6,
-              "cacheWrite": 0.6
-            },
-            "contextWindow": 131072,
-            "maxTokens": 8192
-          },
-          {
-            "id": "meta-llama/Llama-3.3-70B-Instruct",
-            "name": "Llama 3.3 70B Instruct",
-            "reasoning": false,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0.88,
-              "output": 0.88,
-              "cacheRead": 0.88,
-              "cacheWrite": 0.88
-            },
-            "contextWindow": 131072,
-            "maxTokens": 8192
-          },
-          {
-            "id": "meta-llama/Llama-3.1-8B-Instruct",
-            "name": "Llama 3.1 8B Instruct",
-            "reasoning": false,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0.18,
-              "output": 0.18,
-              "cacheRead": 0.18,
-              "cacheWrite": 0.18
-            },
-            "contextWindow": 131072,
-            "maxTokens": 8192
-          },
-          {
-            "id": "Qwen/Qwen3-8B",
-            "name": "Qwen3 8B",
-            "reasoning": false,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0.1,
-              "output": 0.1,
-              "cacheRead": 0.1,
-              "cacheWrite": 0.1
-            },
-            "contextWindow": 131072,
-            "maxTokens": 8192
-          },
-          {
-            "id": "Qwen/Qwen3-32B",
-            "name": "Qwen3 32B",
-            "reasoning": false,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0.4,
-              "output": 0.4,
-              "cacheRead": 0.4,
-              "cacheWrite": 0.4
-            },
-            "contextWindow": 131072,
-            "maxTokens": 8192
-          },
-          {
-            "id": "Qwen/Qwen2.5-7B-Instruct",
-            "name": "Qwen2.5 7B Instruct",
-            "reasoning": false,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0.1,
-              "output": 0.1,
-              "cacheRead": 0.1,
-              "cacheWrite": 0.1
-            },
-            "contextWindow": 131072,
-            "maxTokens": 8192
-          },
-          {
-            "id": "openai/gpt-oss-120b",
-            "name": "GPT-OSS 120B",
+            "id": "meta-llama/Llama-3.3-70B-Instruct:hf-inference",
+            "name": "Llama 3.3 70B Instruct (Free)",
             "reasoning": false,
             "input": [
               "text"
@@ -183,36 +87,100 @@
             "maxTokens": 8192
           },
           {
-            "id": "moonshotai/Kimi-K2.5",
-            "name": "Kimi K2.5",
+            "id": "meta-llama/Llama-3.1-8B-Instruct:hf-inference",
+            "name": "Llama 3.1 8B Instruct (Free)",
             "reasoning": false,
             "input": [
               "text"
             ],
             "cost": {
-              "input": 0.5,
-              "output": 1,
-              "cacheRead": 0.5,
-              "cacheWrite": 0.5
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
             },
             "contextWindow": 131072,
             "maxTokens": 8192
           },
           {
-            "id": "zai-org/GLM-4.7",
-            "name": "GLM 4.7",
+            "id": "Qwen/Qwen3-8B:hf-inference",
+            "name": "Qwen3 8B (Free)",
             "reasoning": false,
             "input": [
               "text"
             ],
             "cost": {
-              "input": 0.1,
-              "output": 0.1,
-              "cacheRead": 0.1,
-              "cacheWrite": 0.1
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
             },
             "contextWindow": 131072,
             "maxTokens": 8192
+          },
+          {
+            "id": "Qwen/Qwen2.5-7B-Instruct:hf-inference",
+            "name": "Qwen2.5 7B Instruct (Free)",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "mistralai/Mistral-7B-Instruct-v0.3:hf-inference",
+            "name": "Mistral 7B Instruct v0.3 (Free)",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "google/gemma-2-9b-it:hf-inference",
+            "name": "Gemma 2 9B IT (Free)",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "microsoft/phi-2:hf-inference",
+            "name": "Phi-2 (Free)",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 2048,
+            "maxTokens": 1024
           }
         ]
       }
@@ -314,16 +282,16 @@
         "id": "main"
       },
       {
-        "id": "ven",
-        "name": "ven",
-        "workspace": "/root/.openclaw/workspace-ven",
-        "agentDir": "/root/.openclaw/agents/ven/agent"
-      },
-      {
         "id": "rick",
         "name": "Rick",
         "workspace": "/root/.openclaw/workspaces/rick",
         "agentDir": "/root/.openclaw/agents/rick/agent"
+      },
+      {
+        "id": "ultron",
+        "name": "ultron",
+        "workspace": "/root/.openclaw/workspaces/ultron",
+        "agentDir": "/root/.openclaw/agents/ultron/agent"
       }
     ]
   },
@@ -354,17 +322,18 @@
       }
     },
     {
-      "agentId": "ven",
-      "match": {
-        "channel": "telegram",
-        "accountId": "ven"
-      }
-    },
-    {
       "agentId": "rick",
       "match": {
         "channel": "telegram",
         "accountId": "rick"
+      }
+    },
+    {
+      "type": "route",
+      "agentId": "ultron",
+      "match": {
+        "channel": "telegram",
+        "accountId": "ultron"
       }
     }
   ],
@@ -435,6 +404,15 @@
         "rick": {
           "dmPolicy": "pairing",
           "botToken": "8702623619:AAFOd8BXqTwnmxTRXdU5zJsrUCxqRKWNuXM",
+          "groupAllowFrom": [
+            "-1003856597413"
+          ],
+          "groupPolicy": "allowlist",
+          "streaming": "partial"
+        },
+        "ultron": {
+          "dmPolicy": "pairing",
+          "botToken": "8469594929:AAH9VmgK3GsIDyXLHC2iAp24E-xstI5P7Y0",
           "groupAllowFrom": [
             "-1003856597413"
           ],
