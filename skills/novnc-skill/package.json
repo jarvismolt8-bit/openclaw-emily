@@ -1,0 +1,18 @@
+{
+  "name": "novnc-skill",
+  "version": "1.0.0",
+  "description": "Control shared Chrome browser via CDP for web automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "OpenClaw",
+  "license": "ISC",
+  "dependencies": {
+    "playwright-core": "^1.58.2"
+  },
+  "bin": {
+    "novnc": "./cli.js"
+  }
+}
