@@ -23,7 +23,7 @@ When Kevin sends a message prefixed with `claude-cli:`, extract the prompt and f
 1. Detect the `claude-cli:` prefix (case-insensitive).
 2. Extract everything after `claude-cli:` as the prompt (trim whitespace).
 3. Acknowledge briefly: *"On it! Asking Claude now..."*
-4. Execute:
+4. Execute the curl and store the full JSON response:
 
 ```bash
 curl -s -X POST "http://localhost:3001/api/v1/claude-bridge" \
@@ -32,14 +32,17 @@ curl -s -X POST "http://localhost:3001/api/v1/claude-bridge" \
   -d "{\"prompt\":\"PROMPT_HERE\"}"
 ```
 
-5. On `"success": true` — reply to Kevin with the value of `data.response`.
-6. On error (non-success or curl failure) — reply: *"Claude bridge error: [error message]"*
+5. Parse the JSON. Extract `data.response`. Strip any leading bullet symbols (●, •, *, -) and trim whitespace.
+6. **IMMEDIATELY send Kevin a new Telegram message** with exactly the cleaned response text. Do not wait. Do not ask if he wants it. Just send it.
+7. On error (non-success, curl failure, or empty response) — send Kevin: *"Claude bridge error: [error detail]"*
 
 ## Rules
 
 - Always execute the real curl — never simulate or guess a response
-- Wait for curl to complete before replying
-- If `data.response` is empty, reply: *"Claude returned an empty response."*
+- Wait for curl to complete, then IMMEDIATELY reply with the response as a new message
+- Never hold the response and wait for Kevin to ask — always push it proactively
+- Strip leading markdown bullet characters (●, •, *, -) from the response before sending
+- If `data.response` is empty after stripping, reply: *"Claude returned an empty response."*
 - If the session is unavailable (`503` or error mentioning "not available"), reply: *"Claude session is not running. Kevin may need to start the tmux session."*
 
 ## What NOT to do
