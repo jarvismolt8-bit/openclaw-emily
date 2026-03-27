@@ -25,7 +25,7 @@ This skill activates when:
 
 **Base URL:** `http://localhost:3001/api/v1/tasks`
 **Documentation Folder:** `/var/www/cashflow-manager/documentation/`
-**Authentication:** Header `X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7`
+**Authentication:** Header `X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9`
 **Source Header:** `X-Source: telegram`
 
 ## Documentation File Naming
@@ -68,13 +68,13 @@ If documentation doesn't exist, create it:
 ```bash
 # Get task details first
 curl -X GET "http://localhost:3001/api/v1/tasks/{id}" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
   -H "X-Source: telegram"
 
 # Create documentation
 curl -X POST "http://localhost:3001/api/v1/tasks/{id}/documentation" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
   -H "X-Source: telegram" \
   -d '{
     "content": "# Task {id}: {task_name}\n\n**Created:** {date}\n**Updated:** {date}\n\n## Plan Notes\n- {task description}\n\n## Development Notes\n<!-- To be filled -->\n\n## Progress Notes\n- {date} {time}: Started working on this task\n"
@@ -88,7 +88,7 @@ When updating progress, use this API:
 ```bash
 curl -X POST "http://localhost:3001/api/v1/tasks/{id}/documentation" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
   -H "X-Source: telegram" \
   -d '{
     "content": "# Task {id}: {task_name}\n\n**Created:** {created_date}\n**Updated:** {today}\n\n## Plan Notes\n- Point 1\n\n## Development Notes\n- Added new feature\n\n## Progress Notes\n- {timestamp}: Started working on this task\n- {timestamp}: {progress description}\n"
@@ -132,7 +132,7 @@ To read existing documentation:
 
 ```bash
 curl -X GET "http://localhost:3001/api/v1/tasks/{id}/documentation" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
   -H "X-Source: telegram"
 ```
 
