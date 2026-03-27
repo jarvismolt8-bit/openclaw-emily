@@ -9,8 +9,9 @@ Manage tasks by calling the API. **Always execute the curl command and wait for 
 
 ## Config
 - **Base URL:** `http://localhost:3001/api/v1/tasks`
+- **API Key:** `cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9` — use this exact value for `X-API-Key`, every time, no substitution needed
 - **Headers (always include):**
-  - `X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7`
+  - `X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9`
   - `X-Source: telegram`
   - `Content-Type: application/json` (for POST/PUT)
 - **Timezone:** Philippine Time (UTC+8) — run `TZ='Asia/Manila' date '+%b %d %Y %l:%M%p'` for current time
@@ -30,7 +31,7 @@ Extract task name from everything after "task:" or "task ". Default status: `bac
 ```bash
 curl -X POST "http://localhost:3001/api/v1/tasks" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
   -H "X-Source: telegram" \
   -d '{"name":"<task name>","description":"","priority":"medium","date":"Mar 6 2026","time":"2:30pm","status":"backlog"}'
 ```
@@ -40,7 +41,7 @@ Never delete when user says "done" — update status instead.
 ```bash
 curl -X PUT "http://localhost:3001/api/v1/tasks/<id>" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
   -H "X-Source: telegram" \
   -d '{"status":"done"}'
 ```
@@ -50,7 +51,7 @@ Tasks archived for 30+ days are automatically deleted. Use to declutter done tas
 ```bash
 curl -X PUT "http://localhost:3001/api/v1/tasks/<id>" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
   -H "X-Source: telegram" \
   -d '{"status":"archive"}'
 ```
@@ -60,7 +61,7 @@ GET all tasks first to find the ID, then PUT with updated fields.
 ```bash
 curl -X PUT "http://localhost:3001/api/v1/tasks/<id>" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
   -H "X-Source: telegram" \
   -d '{"name":"<new name>","priority":"high"}'
 ```
@@ -69,19 +70,19 @@ curl -X PUT "http://localhost:3001/api/v1/tasks/<id>" \
 ```bash
 # By ID:
 curl -X DELETE "http://localhost:3001/api/v1/tasks/<id>" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
   -H "X-Source: telegram"
 
 # By name:
 curl -X DELETE "http://localhost:3001/api/v1/tasks?name=<url-encoded-name>" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
   -H "X-Source: telegram"
 ```
 
 ### VIEW / SORT — triggers: "show tasks", "list tasks", "sort by"
 ```bash
 curl -X GET "http://localhost:3001/api/v1/tasks?sortBy=priority&sortOrder=desc" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
   -H "X-Source: telegram"
 ```
 Sort params: `sortBy=id|date|priority`, `sortOrder=asc|desc`
@@ -100,13 +101,13 @@ Priority: 🔴 high · 🔵 medium · 🟢 low | Status: 📋 backlog · 🔄 in
 # Set filter:
 curl -X POST "http://localhost:3001/api/v1/tasks/filter" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
   -H "X-Source: telegram" \
   -d '{"status":"done","priority":"","search":""}'
 
 # Clear filter:
 curl -X DELETE "http://localhost:3001/api/v1/tasks/filter" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
   -H "X-Source: telegram"
 ```
 Filter fields: `status` (backlog/in_progress/done/archive/""), `priority` (high/medium/low/""), `search` (text/"")
