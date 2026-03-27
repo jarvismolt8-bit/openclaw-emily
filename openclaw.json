@@ -292,6 +292,12 @@
         "name": "ultron",
         "workspace": "/root/.openclaw/workspaces/ultron",
         "agentDir": "/root/.openclaw/agents/ultron/agent"
+      },
+      {
+        "id": "alfred",
+        "name": "alfred",
+        "workspace": "/root/.openclaw/workspaces/alfred",
+        "agentDir": "/root/.openclaw/agents/alfred/agent"
       }
     ]
   },
@@ -334,6 +340,14 @@
       "match": {
         "channel": "telegram",
         "accountId": "ultron"
+      }
+    },
+    {
+      "type": "route",
+      "agentId": "alfred",
+      "match": {
+        "channel": "telegram",
+        "accountId": "alfred"
       }
     }
   ],
@@ -413,6 +427,15 @@
         "ultron": {
           "dmPolicy": "pairing",
           "botToken": "8469594929:AAH9VmgK3GsIDyXLHC2iAp24E-xstI5P7Y0",
+          "groupAllowFrom": [
+            "-1003856597413"
+          ],
+          "groupPolicy": "allowlist",
+          "streaming": "partial"
+        },
+        "alfred": {
+          "dmPolicy": "pairing",
+          "botToken": "8650707279:AAESAguGR7IAlcMUkY5jsbj9qHb6aTqvtVU",
           "groupAllowFrom": [
             "-1003856597413"
           ],
