@@ -5,7 +5,7 @@ description: Auto-update task documentation in cashflow-manager when working on 
 
 # TASK-DOC-SKILL
 
-This skill automatically updates task documentation files when working on tasks in the cashflow-manager project.
+This skill automatically updates task documentation when working on tasks in the cashflow-manager project, primarily interacting with the task API.
 
 ## Triggers
 
@@ -24,19 +24,20 @@ This skill activates when:
 ## API Configuration
 
 **Base URL:** `http://localhost:3001/api/v1/tasks`
-**Documentation Folder:** `/var/www/cashflow-manager/documentation/`
-**Authentication:** Header `X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9`
+**Authentication:** Header `X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a`
 **Source Header:** `X-Source: telegram`
 
-## Documentation File Naming
+## Documentation Management
 
-Files are named: `{task_id}-{slug}.md`
-- Example: `035-improve-task.md`, `038-add-ssd-to-cashflow.md`
-- The file name should reflect the task name
+Documentation is managed directly via the `cashflow-manager` API.
 
-## Template Content
+## Workflow
 
-When creating a new documentation file:
+### 1. When User Mentions a Ticket
+- Extract ticket ID from message.
+- Call API to get task details: `GET /api/v1/tasks/{id}`.
+- Check if documentation exists via API: `GET /api/v1/tasks/{id}/documentation`.
+- If documentation doesn't exist, create it using the API with the following template content:
 
 ```markdown
 # Task {id}: {task_name}
@@ -54,64 +55,15 @@ When creating a new documentation file:
 <!-- Progress updates during development -->
 ```
 
-## Creating Documentation Workflow
-
-### Step 1: Detect Ticket ID
-When user mentions a ticket number (e.g., "task 035", "check 046", "work on 038"):
-1. Extract the ticket ID from the message
-2. Call API to get task details: `GET /api/v1/tasks/{id}`
-3. Check if documentation exists: `GET /api/v1/tasks/{id}/documentation`
-
-### Step 2: Create Documentation (if not exists)
-If documentation doesn't exist, create it:
-
-```bash
-# Get task details first
-curl -X GET "http://localhost:3001/api/v1/tasks/{id}" \
-  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
-  -H "X-Source: telegram"
-
-# Create documentation
-curl -X POST "http://localhost:3001/api/v1/tasks/{id}/documentation" \
-  -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
-  -H "X-Source: telegram" \
-  -d '{
-    "content": "# Task {id}: {task_name}\n\n**Created:** {date}\n**Updated:** {date}\n\n## Plan Notes\n- {task description}\n\n## Development Notes\n<!-- To be filled -->\n\n## Progress Notes\n- {date} {time}: Started working on this task\n"
-  }'
-```
-
-## Update Documentation
-
-When updating progress, use this API:
-
-```bash
-curl -X POST "http://localhost:3001/api/v1/tasks/{id}/documentation" \
-  -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
-  -H "X-Source: telegram" \
-  -d '{
-    "content": "# Task {id}: {task_name}\n\n**Created:** {created_date}\n**Updated:** {today}\n\n## Plan Notes\n- Point 1\n\n## Development Notes\n- Added new feature\n\n## Progress Notes\n- {timestamp}: Started working on this task\n- {timestamp}: {progress description}\n"
-  }'
-```
-
-## Workflow
-
-### 1. When User Mentions a Ticket
-- Extract ticket ID from message
-- Get task details from API
-- Check if documentation exists
-- If not, create it with template
-
 ### 2. During Development
-- When making significant progress, update the documentation
-- Add entries to "Progress Notes" with timestamp
-- Update "Development Notes" with implementation details
+- When making significant progress, update the documentation via the API.
+- Add entries to "Progress Notes" with timestamp.
+- Update "Development Notes" with implementation details.
 
 ### 3. When Task is Completed
-- **DO NOT mark as done automatically**
-- Only update documentation with completion notes
-- Wait for user to explicitly request moving to done
+- **DO NOT mark as done automatically**.
+- Only update documentation with completion notes.
+- Wait for user to explicitly request moving to done.
 
 ## Progress Note Format
 
@@ -128,20 +80,20 @@ Example:
 
 ## Reading Documentation
 
-To read existing documentation:
+To read existing documentation via API:
 
 ```bash
 curl -X GET "http://localhost:3001/api/v1/tasks/{id}/documentation" \
-  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram"
 ```
 
 ## Important Rules
 
-1. **Always create documentation** when working on a ticket - if it doesn't exist
-2. **NEVER move tickets to done** - wait for explicit user request
-3. **Always update "Updated" date** when modifying documentation
-4. **Keep Progress Notes chronological** - newest at bottom
-5. **Use specific timestamps** - include time when possible
-6. **Be concise** - focus on key progress points
-7. **Link to task** - include task ID in all updates
+1. **Always manage documentation via API** when working on a ticket (create/update if not present or needed).
+2. **NEVER move tickets to done** - wait for explicit user request.
+3. **Always ensure "Updated" date is current** when modifying documentation.
+4. **Keep Progress Notes chronological** - newest at bottom.
+5. **Use specific timestamps** - include time when possible.
+6. **Be concise** - focus on key progress points.
+7. **Link to task** - include task ID in all updates.

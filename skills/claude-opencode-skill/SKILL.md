@@ -12,7 +12,7 @@ When Kevin sends a message prefixed with `claude-cli:`, extract the prompt and f
 - **Method:** POST
 - **Headers:**
   - `Content-Type: application/json`
-  - `X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9`
+  - `X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a`
 
 ## Trigger Phrase
 
@@ -28,7 +28,7 @@ When Kevin sends a message prefixed with `claude-cli:`, extract the prompt and f
 ```bash
 curl -s -X POST "http://localhost:3001/api/v1/claude-bridge" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -d "{\"prompt\":\"PROMPT_HERE\"}"
 ```
 

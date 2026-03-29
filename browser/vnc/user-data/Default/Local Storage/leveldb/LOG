@@ -1,0 +1,6 @@
+2026/03/24-18:15:53.229 8ef9b Reusing MANIFEST /root/.openclaw/browser/vnc/user-data/Default/Local Storage/leveldb/MANIFEST-000001
+2026/03/24-18:15:53.240 8ef9b Recovering log #3
+2026/03/24-18:15:53.241 8ef9b Reusing old log /root/.openclaw/browser/vnc/user-data/Default/Local Storage/leveldb/000003.log 
+2026/03/24-18:16:18.521 8ef9d Level-0 table #5: started
+2026/03/24-18:16:18.529 8ef9d Level-0 table #5: 99866 bytes OK
+2026/03/24-18:16:18.531 8ef9d Delete type=0 #3

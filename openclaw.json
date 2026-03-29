@@ -26,7 +26,7 @@
         "color": "#FF4500"
       },
       "browserless": {
-        "cdpUrl": "https://production-ams.browserless.io?token=2TuzpdT6y4viZ6Adaea01b918e260de3c823e4d2871c02eb7",
+        "cdpUrl": "https://production-ams.browserless.io?token=2TuzpdT6y4viZ6Abbba0a2a8a33123d3ecf06ba73a0280e14",
         "color": "#00AA00"
       }
     }
@@ -306,7 +306,7 @@
     "web": {
       "search": {
         "enabled": true,
-        "apiKey": "BSALRXc-pBoQVQ3F4DyT9ZU6GHJZGIU"
+        "apiKey": "BSA2qyxBkWfW8iFU_3BFj4cP_Zubzq0"
       },
       "fetch": {
         "enabled": true
@@ -367,6 +367,8 @@
     "enabled": true,
     "path": "/hooks",
     "token": "find-your-seat-webhook-token-2026",
+    "defaultSessionKey": "hook:ingress",
+    "allowedAgentIds": ["main"],
     "internal": {
       "enabled": true,
       "entries": {
@@ -399,16 +401,7 @@
       "accounts": {
         "default": {
           "dmPolicy": "pairing",
-          "botToken": "8173776865:AAEn5i6PHSmp_8DFMgno2kFE7E0SAX02qFk",
-          "groupAllowFrom": [
-            "-1003856597413"
-          ],
-          "groupPolicy": "allowlist",
-          "streaming": "partial"
-        },
-        "ven": {
-          "dmPolicy": "pairing",
-          "botToken": "8142770947:AAG-F7DY44yN8DJ-Hc8L2Rw_-WxKyHDVfUQ",
+          "botToken": "8173776865:AAGa8hEyKDbgertfImNA8yLIV0xkhWhnz5E",
           "groupAllowFrom": [
             "-1003856597413"
           ],
@@ -417,7 +410,7 @@
         },
         "rick": {
           "dmPolicy": "pairing",
-          "botToken": "8702623619:AAFOd8BXqTwnmxTRXdU5zJsrUCxqRKWNuXM",
+          "botToken": "8702623619:AAG8o1HVHAqCAtcI4McgQoq-WAe3ioBIhsE",
           "groupAllowFrom": [
             "-1003856597413"
           ],
@@ -426,7 +419,7 @@
         },
         "ultron": {
           "dmPolicy": "pairing",
-          "botToken": "8469594929:AAH9VmgK3GsIDyXLHC2iAp24E-xstI5P7Y0",
+          "botToken": "8469594929:AAEB1kCC8zmcTC9DU76vivlB6NjbqNSpTw4",
           "groupAllowFrom": [
             "-1003856597413"
           ],
@@ -435,7 +428,7 @@
         },
         "alfred": {
           "dmPolicy": "pairing",
-          "botToken": "8650707279:AAESAguGR7IAlcMUkY5jsbj9qHb6aTqvtVU",
+          "botToken": "8650707279:AAHk_wjgHY4IkUAvDxQsrJuihJLJyuAobwo",
           "groupAllowFrom": [
             "-1003856597413"
           ],
@@ -457,7 +450,7 @@
     },
     "auth": {
       "mode": "token",
-      "token": "a0cec356b67499e2a19027d920f838ae617315b1d08cb30c"
+      "token": "371c53c4b80bc5017e452a80f49c18be2d036f9955fe3817"
     },
     "trustedProxies": [],
     "tailscale": {

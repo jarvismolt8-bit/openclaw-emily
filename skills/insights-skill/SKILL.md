@@ -14,7 +14,7 @@ Generate beautiful charts and visualizations from the user's cashflow and task d
 | Insights Base URL | `http://localhost:3001/api/v1/insights` |
 | Cashflow Base URL | `http://localhost:3001/api/v1/cashflow` |
 | Tasks Base URL | `http://localhost:3001/api/v1/tasks` |
-| X-API-Key | `cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9` |
+| X-API-Key | `cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a` |
 | X-Source | `telegram` |
 | Content-Type | `application/json` |
 
@@ -56,14 +56,14 @@ Examples:
 **Cashflow data:**
 ```bash
 curl -s "http://localhost:3001/api/v1/cashflow" \
-  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram"
 ```
 
 **Tasks data:**
 ```bash
 curl -s "http://localhost:3001/api/v1/tasks" \
-  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram"
 ```
 
@@ -121,7 +121,7 @@ Build the payload structure:
 ```bash
 curl -s -X POST "http://localhost:3001/api/v1/insights" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_a9e08eab7943a4a31d0944f92e0f644d14506eeeab48ca0e32d4474afba261c9" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram" \
   -d '{
     "session_id": "UUID",

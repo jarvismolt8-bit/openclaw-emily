@@ -227,7 +227,7 @@ If you don't execute the curl command, the data will NOT be saved.
 ## API Configuration
 
 **Base URL:** `http://localhost:3001/api/v1/tasks`
-**Authentication:** Header `X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7`
+**Authentication:** Header `X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a`
 **Source Header:** Header `X-Source: telegram`
 **Content-Type:** `application/json`
 
@@ -296,7 +296,7 @@ TZ='Asia/Manila' date '+%b %d %Y %l:%M%p'
 ```bash
 curl -X POST "http://localhost:3001/api/v1/tasks" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram" \
   -d '{
     "name": "Task name here",
@@ -350,7 +350,7 @@ When user says "task is done" or "mark task as done":
 ```bash
 curl -X PUT "http://localhost:3001/api/v1/tasks/001" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram" \
   -d '{"status": "done"}'
 ```
@@ -359,7 +359,7 @@ When user says "working on task" or "started task":
 ```bash
 curl -X PUT "http://localhost:3001/api/v1/tasks/001" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram" \
   -d '{"status": "in_progress"}'
 ```
@@ -368,7 +368,7 @@ When user says "move task back to backlog":
 ```bash
 curl -X PUT "http://localhost:3001/api/v1/tasks/001" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram" \
   -d '{"status": "backlog"}'
 ```
@@ -391,14 +391,14 @@ When user says:
 **Delete by ID (if known):**
 ```bash
 curl -X DELETE "http://localhost:3001/api/v1/tasks/012" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram"
 ```
 
 **Delete by Name:**
 ```bash
 curl -X DELETE "http://localhost:3001/api/v1/tasks?name=water%20the%20plants" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram"
 ```
 
@@ -416,7 +416,7 @@ curl -X DELETE "http://localhost:3001/api/v1/tasks?name=water%20the%20plants" \
 **Step 1:** Find the task (if needed):
 ```bash
 curl -X GET "http://localhost:3001/api/v1/tasks" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram"
 ```
 
@@ -424,7 +424,7 @@ curl -X GET "http://localhost:3001/api/v1/tasks" \
 ```bash
 curl -X PUT "http://localhost:3001/api/v1/tasks/001" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram" \
   -d '{
     "name": "New task name",
@@ -455,7 +455,7 @@ curl -X PUT "http://localhost:3001/api/v1/tasks/001" \
 **Default view** (sorted by priority high to low):
 ```bash
 curl -X GET "http://localhost:3001/api/v1/tasks" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram"
 ```
 
@@ -474,21 +474,21 @@ You can sort tasks by ID, date, or priority using query parameters.
 Sort by priority (high to low):
 ```bash
 curl -X GET "http://localhost:3001/api/v1/tasks?sortBy=priority&sortOrder=desc" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram"
 ```
 
 Sort by due date (soonest first):
 ```bash
 curl -X GET "http://localhost:3001/api/v1/tasks?sortBy=date&sortOrder=asc" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram"
 ```
 
 Sort by ID (oldest first):
 ```bash
 curl -X GET "http://localhost:3001/api/v1/tasks?sortBy=id&sortOrder=asc" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram"
 ```
 
@@ -535,7 +535,7 @@ Send filter to web app (filters persist until manually cleared):
 ```bash
 curl -X POST "http://localhost:3001/api/v1/tasks/filter" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram" \
   -d '{
     "status": "done",
@@ -553,7 +553,7 @@ curl -X POST "http://localhost:3001/api/v1/tasks/filter" \
 
 ```bash
 curl -X DELETE "http://localhost:3001/api/v1/tasks/filter" \
-  -H "X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
   -H "X-Source: telegram"
 ```
 
@@ -573,7 +573,7 @@ curl -X DELETE "http://localhost:3001/api/v1/tasks/filter" \
 - **WAIT for the API response** before confirming to user
 - **Check for `"success": true`** in the response
 - **ALWAYS include headers:**
-  - `X-API-Key: cfm_c8fca68bf28e3e272670211894d12fa00cef3993a22622a778b5c1523698c7d7`
+  - `X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a`
   - `X-Source: telegram`
 - **Use proper REST methods:**
   - `POST` for create
