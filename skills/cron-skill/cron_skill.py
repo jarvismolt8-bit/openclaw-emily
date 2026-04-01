@@ -70,7 +70,7 @@ class CronSkill:
         # Construct the job payload
         payload = {
             "kind": "agentTurn",
-            "message": f"🎓 UX Psychology Tip: {task_description}" # Example prefixing for consistency
+            "message": task_description
         }
 
         # Construct the delivery configuration
@@ -81,15 +81,16 @@ class CronSkill:
         }
 
         # Base job configuration with best practices
+        is_recurring = schedule_details.get("kind") in ("every", "cron")
         job_config = {
             "name": job_name,
+            "enabled": True,
             "schedule": schedule_details,
+            "sessionTarget": "isolated",
+            "wakeMode": "next-heartbeat",
             "payload": payload,
             "delivery": delivery,
-            "sessionTarget": "isolated",
-            # Assume one-off tasks by default for now, unless schedule_details implies recurrence
-            # If schedule_details['kind'] == 'every' or 'cron', deleteAfterRun should ideally be False
-            "deleteAfterRun": schedule_details.get("kind") != "every" and schedule_details.get("kind") != "cron",
+            "deleteAfterRun": not is_recurring,
         }
 
         print(f"Scheduling job: {job_name} with schedule: {schedule_details}")

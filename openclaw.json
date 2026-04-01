@@ -188,15 +188,24 @@
   },
   "agents": {
     "defaults": {
+      "heartbeat": {
+        "every": "1h",
+        "target": "telegram",
+        "activeHours": {
+          "start": "00:00",
+          "end": "16:00"
+        }
+      },
       "model": {
-        "primary": "google/gemini-2.5-flash-lite",
+        "primary": "google/gemini-2.5-flash",
         "fallbacks": [
-          "opencode/minimax-m2.5-free",
-          "deepseek-ai/DeepSeek-R1"
+          "google/gemini-2.5-flash-lite",
+          "opencode/minimax-m2.5-free"
         ]
       },
       "models": {
         "opencode/gpt-5-nano": {},
+        "google/gemini-2.5-flash": {},
         "google/gemini-2.5-flash-lite": {},
         "opencode/kimi-k2.5-free": {},
         "opencode/minimax-m2.5-free": {},
@@ -285,7 +294,16 @@
         "id": "rick",
         "name": "Rick",
         "workspace": "/root/.openclaw/workspaces/rick",
-        "agentDir": "/root/.openclaw/agents/rick/agent"
+        "agentDir": "/root/.openclaw/agents/rick/agent",
+        "model": {
+          "primary": "opencode/minimax-m2.5-free",
+          "fallbacks": [
+            "openrouter/meta-llama/llama-3.3-70b-instruct:free",
+            "openrouter/openai/gpt-oss-120b:free",
+            "openrouter/qwen/qwen3-coder:free",
+            "google/gemini-2.5-flash"
+          ]
+        }
       },
       {
         "id": "ultron",
@@ -388,51 +406,48 @@
     "telegram": {
       "enabled": true,
       "dmPolicy": "pairing",
-      "groupAllowFrom": [
-        "-1003856597413"
-      ],
-      "groupPolicy": "allowlist",
+      "groupPolicy": "open",
       "streaming": "partial",
       "actions": {
         "reactions": true,
         "sendMessage": true,
         "sticker": true
       },
+      "groups": {
+        "-1003856597413": {},
+        "-1003811671104": {
+          "requireMention": true
+        }
+      },
       "accounts": {
         "default": {
           "dmPolicy": "pairing",
           "botToken": "8173776865:AAGa8hEyKDbgertfImNA8yLIV0xkhWhnz5E",
-          "groupAllowFrom": [
-            "-1003856597413"
-          ],
-          "groupPolicy": "allowlist",
+          "groupPolicy": "open",
           "streaming": "partial"
         },
         "rick": {
           "dmPolicy": "pairing",
           "botToken": "8702623619:AAG8o1HVHAqCAtcI4McgQoq-WAe3ioBIhsE",
-          "groupAllowFrom": [
-            "-1003856597413"
-          ],
-          "groupPolicy": "allowlist",
+          "groupPolicy": "open",
           "streaming": "partial"
         },
         "ultron": {
           "dmPolicy": "pairing",
           "botToken": "8469594929:AAEB1kCC8zmcTC9DU76vivlB6NjbqNSpTw4",
           "groupAllowFrom": [
-            "-1003856597413"
+            "-1003811671104"
           ],
-          "groupPolicy": "allowlist",
+          "groupPolicy": "open",
           "streaming": "partial"
         },
         "alfred": {
           "dmPolicy": "pairing",
           "botToken": "8650707279:AAHk_wjgHY4IkUAvDxQsrJuihJLJyuAobwo",
           "groupAllowFrom": [
-            "-1003856597413"
+            "-1003811671104"
           ],
-          "groupPolicy": "allowlist",
+          "groupPolicy": "open",
           "streaming": "partial"
         }
       }
@@ -467,6 +482,9 @@
     "entries": {
       "telegram": {
         "enabled": true
+      },
+      "xai": {
+        "enabled": false
       }
     }
   }

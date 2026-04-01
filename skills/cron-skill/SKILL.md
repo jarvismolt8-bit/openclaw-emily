@@ -50,12 +50,41 @@ This skill provides a structured interface for scheduling and managing tasks usi
 *   **Internal Logic:**
     *   Calls `default_api.cron(action="update", jobId=job_id, patch=patch_details)`.
 
-## Best Practices Integrated
+## Required Job Schema
+
+Always include ALL of these fields when calling `default_api.cron(action="add", job={...})`:
+
+```json
+{
+  "name": "descriptive-job-name",
+  "enabled": true,
+  "schedule": { "kind": "at", "at": "2026-04-01T10:00:00.000Z" },
+  "sessionTarget": "isolated",
+  "wakeMode": "next-heartbeat",
+  "payload": {
+    "kind": "agentTurn",
+    "message": "The exact message or prompt to run"
+  },
+  "delivery": {
+    "mode": "announce",
+    "channel": "telegram",
+    "to": "telegram:8369197480"
+  },
+  "deleteAfterRun": true
+}
+```
+
+**Field notes:**
+- `enabled: true` — required, job will not fire if missing or false
+- `wakeMode: "next-heartbeat"` — required for reliable firing
+- `deleteAfterRun: true` for one-off (`at`) tasks; `false` for recurring (`every`/`cron`)
+- `payload.message` — use the raw message with no added prefixes
+
+## Best Practices
 
 *   **`sessionTarget: "isolated"`:** Jobs run independently.
 *   **`payload.kind: "agentTurn"`:** Ensures agent-like execution.
-*   **`delivery.announce`:** For direct channel messaging.
-*   **`deleteAfterRun: True`:** Automatic cleanup for one-time tasks.
-*   **Naming Convention:** Automatically generated or user-specified names.
+*   **`delivery.mode: "announce"`:** For direct channel messaging.
+*   **`deleteAfterRun: true`:** Automatic cleanup for one-time tasks.
 
 ---

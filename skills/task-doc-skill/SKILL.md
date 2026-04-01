@@ -88,6 +88,20 @@ curl -X GET "http://localhost:3001/api/v1/tasks/{id}/documentation" \
   -H "X-Source: telegram"
 ```
 
+## Creating / Updating Documentation
+
+To create or update documentation via API (POST replaces existing content):
+
+```bash
+curl -X POST "http://localhost:3001/api/v1/tasks/{id}/documentation" \
+  -H "X-API-Key: cfm_9ebe271c5559514a3c33068bd470eb0b8cad214069beeff13a3df8342d48b57a" \
+  -H "X-Source: telegram" \
+  -H "Content-Type: application/json" \
+  -d '{"content": "# Task {id}: {task_name}\n\n..."}'
+```
+
+**Important:** `Content-Type: application/json` is required and `content` must be a non-empty string or the server returns a 400 error.
+
 ## Important Rules
 
 1. **Always manage documentation via API** when working on a ticket (create/update if not present or needed).
