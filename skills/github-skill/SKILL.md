@@ -29,7 +29,7 @@ FIND_YOUR_SEAT="/var/www/find-your-seat"
 ### Check Status
 ```bash
 # Specific repo
-git -C /root/.openclaw/workspace status
+git -C /root/.openclaw status
 git -C /var/www/cashflow-manager status
 git -C /var/www/find-your-seat status
 
@@ -245,9 +245,33 @@ There's a helper script at `~/workspace/skills/github-skill/github.sh` for conve
 ~/workspace/skills/github-skill/github.sh push workspace
 ```
 
+## SSH Authentication
+
+GitHub push uses SSH key authentication. The server's public key is registered on GitHub under `jarvismolt8-bit`.
+
+- **Key location:** `/root/.ssh/id_ed25519`
+- **Key type:** ed25519
+- **Label:** `cashflow-manager-server`
+- **Fingerprint:** `SHA256:Rnf0dJlHjodX5pW2KAGeSSl8j0CSEes6j/Ksbe4YmHc`
+
+### Test SSH connection
+```bash
+ssh -T git@github.com
+# Expected: Hi jarvismolt8-bit! You've successfully authenticated...
+```
+
+If push fails with `Permission denied (publickey)`, the SSH key may have been rotated or removed from GitHub. A new key must be generated and re-added to GitHub → Settings → SSH and GPG keys.
+
+### Generate new SSH key (if needed)
+```bash
+ssh-keygen -t ed25519 -C "cashflow-manager-server" -f /root/.ssh/id_ed25519 -N ""
+cat /root/.ssh/id_ed25519.pub  # copy this to GitHub
+```
+
 ## Notes
 
 - gh CLI is optional - only needed for PR features
 - All paths are absolute to avoid confusion
 - Always confirm before destructive operations
 - Keep commit messages concise but descriptive
+- SSH key auth is required for push — test with `ssh -T git@github.com` if push fails
