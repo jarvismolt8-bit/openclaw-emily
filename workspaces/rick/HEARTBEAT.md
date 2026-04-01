@@ -1,0 +1,1 @@
+message(action='send', message='I\'m pickle Rick!', target='telegram:8369197480')

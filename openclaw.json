@@ -295,13 +295,20 @@
         "name": "Rick",
         "workspace": "/root/.openclaw/workspaces/rick",
         "agentDir": "/root/.openclaw/agents/rick/agent",
+        "heartbeat": {
+          "every": "30m",
+          "target": "telegram",
+          "to": "telegram:8369197480",
+          "lightContext": true,
+          "model": "google/gemini-2.5-flash"
+        },
         "model": {
-          "primary": "opencode/minimax-m2.5-free",
+          "primary": "google/gemini-2.5-flash",
           "fallbacks": [
             "openrouter/meta-llama/llama-3.3-70b-instruct:free",
             "openrouter/openai/gpt-oss-120b:free",
             "openrouter/qwen/qwen3-coder:free",
-            "google/gemini-2.5-flash"
+            "google/gemini-2.5-flash-lite"
           ]
         }
       },

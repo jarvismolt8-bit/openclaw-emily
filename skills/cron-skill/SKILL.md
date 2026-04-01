@@ -1,90 +1,104 @@
 ---
 name: cron-skill
-description: Manages cron jobs using OpenClaw's cron API, adhering to best practices for reliability and organization.
-version: 1.0.0
+description: Schedules cron jobs via OpenClaw cron API
 ---
 
 # Cron Skill
 
-This skill provides a structured interface for scheduling and managing tasks using the OpenClaw `cron` tool. It ensures all scheduled jobs follow best practices, such as isolation, automatic cleanup, and clear delivery configurations.
+## IMPORTANT: Execution
 
-## Core Functions
+When asked to add a cron job, you MUST actually EXECUTE the command, not just show what it would look like.
 
-### add_scheduled_task(task_description: str, schedule_details: dict, target_channel: str = "telegram", target_id: str = "telegram:8369197480", job_name: str = None)
+**Always verify after adding:** Run `openclaw cron list` to confirm the job was created.
 
-*   **Description:** Schedules a one-time or recurring task.
-*   **Parameters:**
-    *   `task_description`: The core message or prompt for the task (e.g., "remind me to water plants").
-    *   `schedule_details`: A dictionary defining when the task should run. Must include `kind` (e.g., `"at"`, `"every"`, `"cron"`) and the specific time/expression. For example: `{"kind": "at", "at": "2026-02-11T23:00:00Z"}`.
-    *   `target_channel` (optional): The messaging channel for the notification (default: `"telegram"`).
-    *   `target_id` (optional): The recipient's identifier in the channel (default: `"telegram:8369197480"`).
-    *   `job_name` (optional): A custom name for the cron job. If not provided, a name will be generated from `task_description`.
-*   **Internal Logic:**
-    *   Generates a descriptive `job_name` if one is not provided.
-    *   Constructs the `payload` for an `agentTurn` task.
-    *   Configures `delivery` for the specified `target_channel` and `target_id`, with `mode: "announce"`.
-    *   Sets `sessionTarget: "isolated"` and `deleteAfterRun: True` for one-off tasks.
-    *   Calls `default_api.cron(action="add", job={...})` to schedule the task.
+## Functions
+
+### add_scheduled_task(task_description, schedule_details, target_channel, target_id, job_name)
+
+Schedule a task. Returns job_id.
 
 ### list_scheduled_tasks()
+List all jobs. Use this to verify jobs were created.
 
-*   **Description:** Retrieves a list of all currently scheduled cron jobs.
-*   **Internal Logic:**
-    *   Calls `default_api.cron(action="list")`.
-    *   Returns the list of jobs.
+### remove_scheduled_task(job_id)
+Delete a job when no longer needed.
 
-### remove_scheduled_task(job_id: str)
+## Available Agents
 
-*   **Description:** Deletes a cron job by its unique ID.
-*   **Parameters:**
-    *   `job_id`: The ID of the cron job to remove.
-*   **Internal Logic:**
-    *   Calls `default_api.cron(action="remove", jobId=job_id)`.
+Use `--agent` to target a specific agent's workspace:
 
-### update_scheduled_task(job_id: str, patch_details: dict)
+| Agent ID | Workspace | Default Model |
+|----------|-----------|---------------|
+| main | /root/.openclaw/workspace | gemini-2.5-flash |
+| rick | /root/.openclaw/workspaces/rick | minimax-m2.5-free |
+| alfred | /root/.openclaw/workspaces/alfred | (default) |
+| ultron | /root/.openclaw/workspaces/ultron | (default) |
 
-*   **Description:** Modifies an existing cron job.
-*   **Parameters:**
-    *   `job_id`: The ID of the cron job to update.
-    *   `patch_details`: A dictionary containing the fields to update (e.g., new schedule, new task description).
-*   **Internal Logic:**
-    *   Calls `default_api.cron(action="update", jobId=job_id, patch=patch_details)`.
+## Schedule Examples
 
-## Required Job Schema
-
-Always include ALL of these fields when calling `default_api.cron(action="add", job={...})`:
-
-```json
-{
-  "name": "descriptive-job-name",
-  "enabled": true,
-  "schedule": { "kind": "at", "at": "2026-04-01T10:00:00.000Z" },
-  "sessionTarget": "isolated",
-  "wakeMode": "next-heartbeat",
-  "payload": {
-    "kind": "agentTurn",
-    "message": "The exact message or prompt to run"
-  },
-  "delivery": {
-    "mode": "announce",
-    "channel": "telegram",
-    "to": "telegram:8369197480"
-  },
-  "deleteAfterRun": true
-}
+One-time (runs once):
+```python
+{"kind": "at", "at": "2026-04-01T10:00:00Z"}
 ```
 
-**Field notes:**
-- `enabled: true` — required, job will not fire if missing or false
-- `wakeMode: "next-heartbeat"` — required for reliable firing
-- `deleteAfterRun: true` for one-off (`at`) tasks; `false` for recurring (`every`/`cron`)
-- `payload.message` — use the raw message with no added prefixes
+Every 3 minutes (recurring):
+```python
+{"kind": "every", "everyMs": 180000}
+```
 
-## Best Practices
+Every 10 minutes:
+```python
+{"kind": "every", "everyMs": 600000}
+```
 
-*   **`sessionTarget: "isolated"`:** Jobs run independently.
-*   **`payload.kind: "agentTurn"`:** Ensures agent-like execution.
-*   **`delivery.mode: "announce"`:** For direct channel messaging.
-*   **`deleteAfterRun: true`:** Automatic cleanup for one-time tasks.
+Daily at 7am:
+```python
+{"kind": "cron", "expr": "0 7 * * *", "tz": "America/Los_Angeles"}
+```
 
----
+## CLI Command Format
+
+**Basic (default agent):**
+```bash
+openclaw cron add \
+  --name "Job Name" \
+  --every 3m \
+  --session isolated \
+  --wake next-heartbeat \
+  --message "Your task" \
+  --announce \
+  --channel telegram \
+  --to telegram:8369197480
+```
+
+**With agent (rick's workspace):**
+```bash
+openclaw cron add \
+  --name "Rick Heartbeat" \
+  --every 5m \
+  --session isolated \
+  --wake next-heartbeat \
+  --message "Read /root/.openclaw/workspaces/rick/HEARTBEAT.md. Follow it strictly." \
+  --announce \
+  --channel telegram \
+  --to telegram:8369197480 \
+  --agent rick
+```
+
+**Common flags:**
+- `--every Xm` - interval (e.g., 3m, 5m, 10m)
+- `--at "YYYY-MM-DDTHH:MM:SSZ"` - one-shot
+- `--cron "0 7 * * *"` - cron expression
+- `--tz "America/Los_Angeles"` - timezone
+- `--agent rick` - target specific agent's workspace
+- `--message` - task description
+- `--announce --channel telegram --to telegram:8369197480` - delivery
+
+## Rules
+
+- Use `--agent rick` (etc.) to target a specific agent's workspace
+- `deleteAfterRun: false` for recurring jobs (every/cron)
+- `deleteAfterRun: true` for one-off jobs (at)
+- Use `sessionTarget: "isolated"` for independent runs
+- After adding, always verify with `openclaw cron list`
+- Delete manually when done: `openclaw cron remove <job-id>
